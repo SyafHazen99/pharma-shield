@@ -319,154 +319,159 @@ export default function DirectorDashboard({
           </span>
         </div>
 
-        {/* Spacious 5-Card Grid with Percentage Contribution Progress Bars (Zero Truncation / Full Text & Numbers) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 text-xs font-sans">
+        {/* Executive 5-Card Grid (Ultra-Responsive & Zero-Overflow) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 text-xs font-sans">
           
           {/* Gudang Utama (Rank #1) */}
-          <div className="bg-white p-4 rounded-3xl border border-indigo-200/80 space-y-3 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all flex flex-col justify-between">
+          <div className="bg-white p-3.5 rounded-2xl border border-indigo-200/80 space-y-2.5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden">
             <div>
               <div className="flex items-center justify-between gap-1 border-b border-indigo-100 pb-2">
-                <span className="font-extrabold text-indigo-950 text-xs sm:text-sm flex items-center gap-1 whitespace-nowrap">
-                  🏭 Gudang Utama
-                </span>
-                <span className="px-2 py-0.5 rounded-lg bg-indigo-100 text-indigo-800 text-[10px] font-mono font-extrabold whitespace-nowrap shrink-0">
-                  #1 RANK
+                <div className="font-extrabold text-slate-900 text-xs flex items-center gap-1 min-w-0">
+                  <span className="shrink-0">🏭</span>
+                  <span className="truncate">Gudang Utama</span>
+                </div>
+                <span className="px-1.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-[9px] font-mono font-extrabold shrink-0">
+                  #1
                 </span>
               </div>
 
-              <div className="pt-2.5 space-y-1">
-                <div className="text-slate-400 text-[9px] sm:text-[10px] uppercase font-bold tracking-wider font-mono">Valuasi Stok Sistem</div>
-                <div className="text-slate-900 font-extrabold text-sm sm:text-base font-mono tracking-tight whitespace-nowrap">{formatRupiah(gdValuation)}</div>
-                <div className="text-[11px] text-slate-600 font-sans pt-0.5 whitespace-nowrap">Total SKU: <strong className="text-slate-900 font-bold">{gdMeds.length.toLocaleString('id-ID')} Items</strong></div>
+              <div className="pt-2 space-y-0.5">
+                <div className="text-slate-400 text-[9px] uppercase font-bold tracking-wider font-mono">Valuasi Stok Sistem</div>
+                <div className="text-slate-900 font-extrabold text-xs sm:text-sm font-mono tracking-tight">{formatRupiah(gdValuation)}</div>
+                <div className="text-[10px] text-slate-500 font-sans">Total SKU: <strong className="text-slate-800 font-bold">{gdMeds.length.toLocaleString('id-ID')} Items</strong></div>
               </div>
             </div>
 
-            <div className="pt-2.5 border-t border-slate-100 space-y-1.5">
-              <div className="flex items-center justify-between text-[10px] font-mono text-indigo-900 font-bold">
+            <div className="pt-2 border-t border-slate-100 space-y-1">
+              <div className="flex items-center justify-between text-[9px] font-mono text-indigo-900 font-bold">
                 <span>Kontribusi RS:</span>
                 <span>{getPercentage(gdValuation)}%</span>
               </div>
-              <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+              <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
                 <div className="bg-indigo-600 h-full rounded-full transition-all duration-500" style={{ width: `${getPercentage(gdValuation)}%` }}></div>
               </div>
             </div>
           </div>
 
           {/* Rawat Inap (Rank #2) */}
-          <div className="bg-white p-4 rounded-3xl border border-emerald-200/80 space-y-3 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all flex flex-col justify-between">
+          <div className="bg-white p-3.5 rounded-2xl border border-emerald-200/80 space-y-2.5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden">
             <div>
               <div className="flex items-center justify-between gap-1 border-b border-emerald-100 pb-2">
-                <span className="font-extrabold text-emerald-950 text-xs sm:text-sm flex items-center gap-1 whitespace-nowrap">
-                  🏥 Rawat Inap
-                </span>
-                <span className="px-2 py-0.5 rounded-lg bg-emerald-100 text-emerald-800 text-[10px] font-mono font-extrabold whitespace-nowrap shrink-0">
-                  #2 RANK
+                <div className="font-extrabold text-slate-900 text-xs flex items-center gap-1 min-w-0">
+                  <span className="shrink-0">🏥</span>
+                  <span className="truncate">Rawat Inap</span>
+                </div>
+                <span className="px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[9px] font-mono font-extrabold shrink-0">
+                  #2
                 </span>
               </div>
 
-              <div className="pt-2.5 space-y-1">
-                <div className="text-slate-400 text-[9px] sm:text-[10px] uppercase font-bold tracking-wider font-mono">Valuasi Stok Sistem</div>
-                <div className="text-slate-900 font-extrabold text-sm sm:text-base font-mono tracking-tight whitespace-nowrap">{formatRupiah(riValuation)}</div>
-                <div className="text-[11px] text-slate-600 font-sans pt-0.5 whitespace-nowrap">Total SKU: <strong className="text-slate-900 font-bold">{riMeds.length.toLocaleString('id-ID')} Items</strong></div>
+              <div className="pt-2 space-y-0.5">
+                <div className="text-slate-400 text-[9px] uppercase font-bold tracking-wider font-mono">Valuasi Stok Sistem</div>
+                <div className="text-slate-900 font-extrabold text-xs sm:text-sm font-mono tracking-tight">{formatRupiah(riValuation)}</div>
+                <div className="text-[10px] text-slate-500 font-sans">Total SKU: <strong className="text-slate-800 font-bold">{riMeds.length.toLocaleString('id-ID')} Items</strong></div>
               </div>
             </div>
 
-            <div className="pt-2.5 border-t border-slate-100 space-y-1.5">
-              <div className="flex items-center justify-between text-[10px] font-mono text-emerald-900 font-bold">
+            <div className="pt-2 border-t border-slate-100 space-y-1">
+              <div className="flex items-center justify-between text-[9px] font-mono text-emerald-900 font-bold">
                 <span>Kontribusi RS:</span>
                 <span>{getPercentage(riValuation)}%</span>
               </div>
-              <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+              <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
                 <div className="bg-emerald-600 h-full rounded-full transition-all duration-500" style={{ width: `${getPercentage(riValuation)}%` }}></div>
               </div>
             </div>
           </div>
 
           {/* Rawat Jalan (Rank #3) */}
-          <div className="bg-white p-4 rounded-3xl border border-blue-200/80 space-y-3 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all flex flex-col justify-between">
+          <div className="bg-white p-3.5 rounded-2xl border border-blue-200/80 space-y-2.5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden">
             <div>
               <div className="flex items-center justify-between gap-1 border-b border-blue-100 pb-2">
-                <span className="font-extrabold text-blue-950 text-xs sm:text-sm flex items-center gap-1 whitespace-nowrap">
-                  🩺 Rawat Jalan
-                </span>
-                <span className="px-2 py-0.5 rounded-lg bg-blue-100 text-blue-800 text-[10px] font-mono font-extrabold whitespace-nowrap shrink-0">
-                  #3 RANK
+                <div className="font-extrabold text-slate-900 text-xs flex items-center gap-1 min-w-0">
+                  <span className="shrink-0">🩺</span>
+                  <span className="truncate">Rawat Jalan</span>
+                </div>
+                <span className="px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 text-[9px] font-mono font-extrabold shrink-0">
+                  #3
                 </span>
               </div>
 
-              <div className="pt-2.5 space-y-1">
-                <div className="text-slate-400 text-[9px] sm:text-[10px] uppercase font-bold tracking-wider font-mono">Valuasi Stok Sistem</div>
-                <div className="text-slate-900 font-extrabold text-sm sm:text-base font-mono tracking-tight whitespace-nowrap">{formatRupiah(rjValuation)}</div>
-                <div className="text-[11px] text-slate-600 font-sans pt-0.5 whitespace-nowrap">Total SKU: <strong className="text-slate-900 font-bold">{rjMeds.length.toLocaleString('id-ID')} Items</strong></div>
+              <div className="pt-2 space-y-0.5">
+                <div className="text-slate-400 text-[9px] uppercase font-bold tracking-wider font-mono">Valuasi Stok Sistem</div>
+                <div className="text-slate-900 font-extrabold text-xs sm:text-sm font-mono tracking-tight">{formatRupiah(rjValuation)}</div>
+                <div className="text-[10px] text-slate-500 font-sans">Total SKU: <strong className="text-slate-800 font-bold">{rjMeds.length.toLocaleString('id-ID')} Items</strong></div>
               </div>
             </div>
 
-            <div className="pt-2.5 border-t border-slate-100 space-y-1.5">
-              <div className="flex items-center justify-between text-[10px] font-mono text-blue-900 font-bold">
+            <div className="pt-2 border-t border-slate-100 space-y-1">
+              <div className="flex items-center justify-between text-[9px] font-mono text-blue-900 font-bold">
                 <span>Kontribusi RS:</span>
                 <span>{getPercentage(rjValuation)}%</span>
               </div>
-              <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+              <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
                 <div className="bg-blue-600 h-full rounded-full transition-all duration-500" style={{ width: `${getPercentage(rjValuation)}%` }}></div>
               </div>
             </div>
           </div>
 
           {/* Kamar Operasi / OK (Rank #4) */}
-          <div className="bg-white p-4 rounded-3xl border border-purple-200/80 space-y-3 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all flex flex-col justify-between">
+          <div className="bg-white p-3.5 rounded-2xl border border-purple-200/80 space-y-2.5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden">
             <div>
               <div className="flex items-center justify-between gap-1 border-b border-purple-100 pb-2">
-                <span className="font-extrabold text-purple-950 text-xs sm:text-sm flex items-center gap-1 whitespace-nowrap">
-                  🔪 Kamar Operasi
-                </span>
-                <span className="px-2 py-0.5 rounded-lg bg-purple-100 text-purple-800 text-[10px] font-mono font-extrabold whitespace-nowrap shrink-0">
-                  #4 RANK
+                <div className="font-extrabold text-slate-900 text-xs flex items-center gap-1 min-w-0">
+                  <span className="shrink-0">🔪</span>
+                  <span className="truncate">Kamar Operasi</span>
+                </div>
+                <span className="px-1.5 py-0.5 rounded bg-purple-100 text-purple-800 text-[9px] font-mono font-extrabold shrink-0">
+                  #4
                 </span>
               </div>
 
-              <div className="pt-2.5 space-y-1">
-                <div className="text-slate-400 text-[9px] sm:text-[10px] uppercase font-bold tracking-wider font-mono">Valuasi Stok Sistem</div>
-                <div className="text-slate-900 font-extrabold text-sm sm:text-base font-mono tracking-tight whitespace-nowrap">{formatRupiah(okValuation)}</div>
-                <div className="text-[11px] text-slate-600 font-sans pt-0.5 whitespace-nowrap">Total SKU: <strong className="text-slate-900 font-bold">{okMeds.length.toLocaleString('id-ID')} Items</strong></div>
+              <div className="pt-2 space-y-0.5">
+                <div className="text-slate-400 text-[9px] uppercase font-bold tracking-wider font-mono">Valuasi Stok Sistem</div>
+                <div className="text-slate-900 font-extrabold text-xs sm:text-sm font-mono tracking-tight">{formatRupiah(okValuation)}</div>
+                <div className="text-[10px] text-slate-500 font-sans">Total SKU: <strong className="text-slate-800 font-bold">{okMeds.length.toLocaleString('id-ID')} Items</strong></div>
               </div>
             </div>
 
-            <div className="pt-2.5 border-t border-slate-100 space-y-1.5">
-              <div className="flex items-center justify-between text-[10px] font-mono text-purple-900 font-bold">
+            <div className="pt-2 border-t border-slate-100 space-y-1">
+              <div className="flex items-center justify-between text-[9px] font-mono text-purple-900 font-bold">
                 <span>Kontribusi RS:</span>
                 <span>{getPercentage(okValuation)}%</span>
               </div>
-              <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+              <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
                 <div className="bg-purple-600 h-full rounded-full transition-all duration-500" style={{ width: `${getPercentage(okValuation)}%` }}></div>
               </div>
             </div>
           </div>
 
           {/* Ruang Bayi (Rank #5) */}
-          <div className="bg-white p-4 rounded-3xl border border-amber-200/80 space-y-3 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all flex flex-col justify-between">
+          <div className="bg-white p-3.5 rounded-2xl border border-amber-200/80 space-y-2.5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden">
             <div>
               <div className="flex items-center justify-between gap-1 border-b border-amber-100 pb-2">
-                <span className="font-extrabold text-amber-950 text-xs sm:text-sm flex items-center gap-1 whitespace-nowrap">
-                  👶 Ruang Bayi
-                </span>
-                <span className="px-2 py-0.5 rounded-lg bg-amber-100 text-amber-800 text-[10px] font-mono font-extrabold whitespace-nowrap shrink-0">
-                  #5 RANK
+                <div className="font-extrabold text-slate-900 text-xs flex items-center gap-1 min-w-0">
+                  <span className="shrink-0">👶</span>
+                  <span className="truncate">Ruang Bayi</span>
+                </div>
+                <span className="px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 text-[9px] font-mono font-extrabold shrink-0">
+                  #5
                 </span>
               </div>
 
-              <div className="pt-2.5 space-y-1">
-                <div className="text-slate-400 text-[9px] sm:text-[10px] uppercase font-bold tracking-wider font-mono">Valuasi Stok Sistem</div>
-                <div className="text-slate-900 font-extrabold text-sm sm:text-base font-mono tracking-tight whitespace-nowrap">{formatRupiah(rbValuation)}</div>
-                <div className="text-[11px] text-slate-600 font-sans pt-0.5 whitespace-nowrap">Total SKU: <strong className="text-slate-900 font-bold">{rbMeds.length.toLocaleString('id-ID')} Items</strong></div>
+              <div className="pt-2 space-y-0.5">
+                <div className="text-slate-400 text-[9px] uppercase font-bold tracking-wider font-mono">Valuasi Stok Sistem</div>
+                <div className="text-slate-900 font-extrabold text-xs sm:text-sm font-mono tracking-tight">{formatRupiah(rbValuation)}</div>
+                <div className="text-[10px] text-slate-500 font-sans">Total SKU: <strong className="text-slate-800 font-bold">{rbMeds.length.toLocaleString('id-ID')} Items</strong></div>
               </div>
             </div>
 
-            <div className="pt-2.5 border-t border-slate-100 space-y-1.5">
-              <div className="flex items-center justify-between text-[10px] font-mono text-amber-900 font-bold">
+            <div className="pt-2 border-t border-slate-100 space-y-1">
+              <div className="flex items-center justify-between text-[9px] font-mono text-amber-900 font-bold">
                 <span>Kontribusi RS:</span>
                 <span>{getPercentage(rbValuation)}%</span>
               </div>
-              <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+              <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
                 <div className="bg-amber-500 h-full rounded-full transition-all duration-500" style={{ width: `${getPercentage(rbValuation)}%` }}></div>
               </div>
             </div>
