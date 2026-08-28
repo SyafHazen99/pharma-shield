@@ -319,29 +319,29 @@ export default function DirectorDashboard({
           </span>
         </div>
 
-        {/* Spacious 5-Card Grid with Percentage Contribution Progress Bars (Zero Overflow Layout) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 text-xs font-sans">
+        {/* Spacious 5-Card Grid with Percentage Contribution Progress Bars (Zero Truncation / Full Text & Numbers) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 text-xs font-sans">
           
           {/* Gudang Utama (Rank #1) */}
-          <div className="bg-white p-4 sm:p-5 rounded-3xl border border-indigo-200/80 space-y-3 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all flex flex-col justify-between overflow-hidden">
+          <div className="bg-white p-4 rounded-3xl border border-indigo-200/80 space-y-3 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all flex flex-col justify-between">
             <div>
-              <div className="flex items-center justify-between gap-1.5 border-b border-indigo-100 pb-2.5">
-                <span className="font-extrabold text-indigo-950 text-xs xl:text-sm flex items-center gap-1 truncate flex-1 min-w-0">
+              <div className="flex items-center justify-between gap-1 border-b border-indigo-100 pb-2">
+                <span className="font-extrabold text-indigo-950 text-xs sm:text-sm flex items-center gap-1 whitespace-nowrap">
                   🏭 Gudang Utama
                 </span>
-                <span className="px-2 py-0.5 rounded-lg bg-indigo-100 text-indigo-800 text-[10px] font-mono font-extrabold whitespace-nowrap shrink-0 inline-flex items-center justify-center">
+                <span className="px-2 py-0.5 rounded-lg bg-indigo-100 text-indigo-800 text-[10px] font-mono font-extrabold whitespace-nowrap shrink-0">
                   #1 RANK
                 </span>
               </div>
 
-              <div className="pt-3 space-y-1">
-                <div className="text-slate-400 text-[10px] uppercase font-bold tracking-wider font-mono">Valuasi Stok Sistem</div>
-                <div className="text-slate-900 font-extrabold text-base xl:text-lg font-mono tracking-tight truncate">{formatRupiah(gdValuation)}</div>
-                <div className="text-[11px] text-slate-600 font-sans pt-0.5 truncate">Total SKU: <strong className="text-slate-900 font-bold">{gdMeds.length.toLocaleString('id-ID')} Items</strong></div>
+              <div className="pt-2.5 space-y-1">
+                <div className="text-slate-400 text-[9px] sm:text-[10px] uppercase font-bold tracking-wider font-mono">Valuasi Stok Sistem</div>
+                <div className="text-slate-900 font-extrabold text-sm sm:text-base font-mono tracking-tight whitespace-nowrap">{formatRupiah(gdValuation)}</div>
+                <div className="text-[11px] text-slate-600 font-sans pt-0.5 whitespace-nowrap">Total SKU: <strong className="text-slate-900 font-bold">{gdMeds.length.toLocaleString('id-ID')} Items</strong></div>
               </div>
             </div>
 
-            <div className="pt-3 border-t border-slate-100 space-y-1.5">
+            <div className="pt-2.5 border-t border-slate-100 space-y-1.5">
               <div className="flex items-center justify-between text-[10px] font-mono text-indigo-900 font-bold">
                 <span>Kontribusi RS:</span>
                 <span>{getPercentage(gdValuation)}%</span>
@@ -353,25 +353,25 @@ export default function DirectorDashboard({
           </div>
 
           {/* Rawat Inap (Rank #2) */}
-          <div className="bg-white p-4 sm:p-5 rounded-3xl border border-emerald-200/80 space-y-3 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all flex flex-col justify-between overflow-hidden">
+          <div className="bg-white p-4 rounded-3xl border border-emerald-200/80 space-y-3 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all flex flex-col justify-between">
             <div>
-              <div className="flex items-center justify-between gap-1.5 border-b border-emerald-100 pb-2.5">
-                <span className="font-extrabold text-emerald-950 text-xs xl:text-sm flex items-center gap-1 truncate flex-1 min-w-0">
+              <div className="flex items-center justify-between gap-1 border-b border-emerald-100 pb-2">
+                <span className="font-extrabold text-emerald-950 text-xs sm:text-sm flex items-center gap-1 whitespace-nowrap">
                   🏥 Rawat Inap
                 </span>
-                <span className="px-2 py-0.5 rounded-lg bg-emerald-100 text-emerald-800 text-[10px] font-mono font-extrabold whitespace-nowrap shrink-0 inline-flex items-center justify-center">
+                <span className="px-2 py-0.5 rounded-lg bg-emerald-100 text-emerald-800 text-[10px] font-mono font-extrabold whitespace-nowrap shrink-0">
                   #2 RANK
                 </span>
               </div>
 
-              <div className="pt-3 space-y-1">
-                <div className="text-slate-400 text-[10px] uppercase font-bold tracking-wider font-mono">Valuasi Stok Sistem</div>
-                <div className="text-slate-900 font-extrabold text-base xl:text-lg font-mono tracking-tight truncate">{formatRupiah(riValuation)}</div>
-                <div className="text-[11px] text-slate-600 font-sans pt-0.5 truncate">Total SKU: <strong className="text-slate-900 font-bold">{riMeds.length.toLocaleString('id-ID')} Items</strong></div>
+              <div className="pt-2.5 space-y-1">
+                <div className="text-slate-400 text-[9px] sm:text-[10px] uppercase font-bold tracking-wider font-mono">Valuasi Stok Sistem</div>
+                <div className="text-slate-900 font-extrabold text-sm sm:text-base font-mono tracking-tight whitespace-nowrap">{formatRupiah(riValuation)}</div>
+                <div className="text-[11px] text-slate-600 font-sans pt-0.5 whitespace-nowrap">Total SKU: <strong className="text-slate-900 font-bold">{riMeds.length.toLocaleString('id-ID')} Items</strong></div>
               </div>
             </div>
 
-            <div className="pt-3 border-t border-slate-100 space-y-1.5">
+            <div className="pt-2.5 border-t border-slate-100 space-y-1.5">
               <div className="flex items-center justify-between text-[10px] font-mono text-emerald-900 font-bold">
                 <span>Kontribusi RS:</span>
                 <span>{getPercentage(riValuation)}%</span>
@@ -383,25 +383,25 @@ export default function DirectorDashboard({
           </div>
 
           {/* Rawat Jalan (Rank #3) */}
-          <div className="bg-white p-4 sm:p-5 rounded-3xl border border-blue-200/80 space-y-3 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all flex flex-col justify-between overflow-hidden">
+          <div className="bg-white p-4 rounded-3xl border border-blue-200/80 space-y-3 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all flex flex-col justify-between">
             <div>
-              <div className="flex items-center justify-between gap-1.5 border-b border-blue-100 pb-2.5">
-                <span className="font-extrabold text-blue-950 text-xs xl:text-sm flex items-center gap-1 truncate flex-1 min-w-0">
+              <div className="flex items-center justify-between gap-1 border-b border-blue-100 pb-2">
+                <span className="font-extrabold text-blue-950 text-xs sm:text-sm flex items-center gap-1 whitespace-nowrap">
                   🩺 Rawat Jalan
                 </span>
-                <span className="px-2 py-0.5 rounded-lg bg-blue-100 text-blue-800 text-[10px] font-mono font-extrabold whitespace-nowrap shrink-0 inline-flex items-center justify-center">
+                <span className="px-2 py-0.5 rounded-lg bg-blue-100 text-blue-800 text-[10px] font-mono font-extrabold whitespace-nowrap shrink-0">
                   #3 RANK
                 </span>
               </div>
 
-              <div className="pt-3 space-y-1">
-                <div className="text-slate-400 text-[10px] uppercase font-bold tracking-wider font-mono">Valuasi Stok Sistem</div>
-                <div className="text-slate-900 font-extrabold text-base xl:text-lg font-mono tracking-tight truncate">{formatRupiah(rjValuation)}</div>
-                <div className="text-[11px] text-slate-600 font-sans pt-0.5 truncate">Total SKU: <strong className="text-slate-900 font-bold">{rjMeds.length.toLocaleString('id-ID')} Items</strong></div>
+              <div className="pt-2.5 space-y-1">
+                <div className="text-slate-400 text-[9px] sm:text-[10px] uppercase font-bold tracking-wider font-mono">Valuasi Stok Sistem</div>
+                <div className="text-slate-900 font-extrabold text-sm sm:text-base font-mono tracking-tight whitespace-nowrap">{formatRupiah(rjValuation)}</div>
+                <div className="text-[11px] text-slate-600 font-sans pt-0.5 whitespace-nowrap">Total SKU: <strong className="text-slate-900 font-bold">{rjMeds.length.toLocaleString('id-ID')} Items</strong></div>
               </div>
             </div>
 
-            <div className="pt-3 border-t border-slate-100 space-y-1.5">
+            <div className="pt-2.5 border-t border-slate-100 space-y-1.5">
               <div className="flex items-center justify-between text-[10px] font-mono text-blue-900 font-bold">
                 <span>Kontribusi RS:</span>
                 <span>{getPercentage(rjValuation)}%</span>
@@ -413,25 +413,25 @@ export default function DirectorDashboard({
           </div>
 
           {/* Kamar Operasi / OK (Rank #4) */}
-          <div className="bg-white p-4 sm:p-5 rounded-3xl border border-purple-200/80 space-y-3 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all flex flex-col justify-between overflow-hidden">
+          <div className="bg-white p-4 rounded-3xl border border-purple-200/80 space-y-3 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all flex flex-col justify-between">
             <div>
-              <div className="flex items-center justify-between gap-1.5 border-b border-purple-100 pb-2.5">
-                <span className="font-extrabold text-purple-950 text-xs xl:text-sm flex items-center gap-1 truncate flex-1 min-w-0">
+              <div className="flex items-center justify-between gap-1 border-b border-purple-100 pb-2">
+                <span className="font-extrabold text-purple-950 text-xs sm:text-sm flex items-center gap-1 whitespace-nowrap">
                   🔪 Kamar Operasi
                 </span>
-                <span className="px-2 py-0.5 rounded-lg bg-purple-100 text-purple-800 text-[10px] font-mono font-extrabold whitespace-nowrap shrink-0 inline-flex items-center justify-center">
+                <span className="px-2 py-0.5 rounded-lg bg-purple-100 text-purple-800 text-[10px] font-mono font-extrabold whitespace-nowrap shrink-0">
                   #4 RANK
                 </span>
               </div>
 
-              <div className="pt-3 space-y-1">
-                <div className="text-slate-400 text-[10px] uppercase font-bold tracking-wider font-mono">Valuasi Stok Sistem</div>
-                <div className="text-slate-900 font-extrabold text-base xl:text-lg font-mono tracking-tight truncate">{formatRupiah(okValuation)}</div>
-                <div className="text-[11px] text-slate-600 font-sans pt-0.5 truncate">Total SKU: <strong className="text-slate-900 font-bold">{okMeds.length.toLocaleString('id-ID')} Items</strong></div>
+              <div className="pt-2.5 space-y-1">
+                <div className="text-slate-400 text-[9px] sm:text-[10px] uppercase font-bold tracking-wider font-mono">Valuasi Stok Sistem</div>
+                <div className="text-slate-900 font-extrabold text-sm sm:text-base font-mono tracking-tight whitespace-nowrap">{formatRupiah(okValuation)}</div>
+                <div className="text-[11px] text-slate-600 font-sans pt-0.5 whitespace-nowrap">Total SKU: <strong className="text-slate-900 font-bold">{okMeds.length.toLocaleString('id-ID')} Items</strong></div>
               </div>
             </div>
 
-            <div className="pt-3 border-t border-slate-100 space-y-1.5">
+            <div className="pt-2.5 border-t border-slate-100 space-y-1.5">
               <div className="flex items-center justify-between text-[10px] font-mono text-purple-900 font-bold">
                 <span>Kontribusi RS:</span>
                 <span>{getPercentage(okValuation)}%</span>
@@ -443,25 +443,25 @@ export default function DirectorDashboard({
           </div>
 
           {/* Ruang Bayi (Rank #5) */}
-          <div className="bg-white p-4 sm:p-5 rounded-3xl border border-amber-200/80 space-y-3 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all flex flex-col justify-between overflow-hidden">
+          <div className="bg-white p-4 rounded-3xl border border-amber-200/80 space-y-3 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all flex flex-col justify-between">
             <div>
-              <div className="flex items-center justify-between gap-1.5 border-b border-amber-100 pb-2.5">
-                <span className="font-extrabold text-amber-950 text-xs xl:text-sm flex items-center gap-1 truncate flex-1 min-w-0">
+              <div className="flex items-center justify-between gap-1 border-b border-amber-100 pb-2">
+                <span className="font-extrabold text-amber-950 text-xs sm:text-sm flex items-center gap-1 whitespace-nowrap">
                   👶 Ruang Bayi
                 </span>
-                <span className="px-2 py-0.5 rounded-lg bg-amber-100 text-amber-800 text-[10px] font-mono font-extrabold whitespace-nowrap shrink-0 inline-flex items-center justify-center">
+                <span className="px-2 py-0.5 rounded-lg bg-amber-100 text-amber-800 text-[10px] font-mono font-extrabold whitespace-nowrap shrink-0">
                   #5 RANK
                 </span>
               </div>
 
-              <div className="pt-3 space-y-1">
-                <div className="text-slate-400 text-[10px] uppercase font-bold tracking-wider font-mono">Valuasi Stok Sistem</div>
-                <div className="text-slate-900 font-extrabold text-base xl:text-lg font-mono tracking-tight truncate">{formatRupiah(rbValuation)}</div>
-                <div className="text-[11px] text-slate-600 font-sans pt-0.5 truncate">Total SKU: <strong className="text-slate-900 font-bold">{rbMeds.length.toLocaleString('id-ID')} Items</strong></div>
+              <div className="pt-2.5 space-y-1">
+                <div className="text-slate-400 text-[9px] sm:text-[10px] uppercase font-bold tracking-wider font-mono">Valuasi Stok Sistem</div>
+                <div className="text-slate-900 font-extrabold text-sm sm:text-base font-mono tracking-tight whitespace-nowrap">{formatRupiah(rbValuation)}</div>
+                <div className="text-[11px] text-slate-600 font-sans pt-0.5 whitespace-nowrap">Total SKU: <strong className="text-slate-900 font-bold">{rbMeds.length.toLocaleString('id-ID')} Items</strong></div>
               </div>
             </div>
 
-            <div className="pt-3 border-t border-slate-100 space-y-1.5">
+            <div className="pt-2.5 border-t border-slate-100 space-y-1.5">
               <div className="flex items-center justify-between text-[10px] font-mono text-amber-900 font-bold">
                 <span>Kontribusi RS:</span>
                 <span>{getPercentage(rbValuation)}%</span>
