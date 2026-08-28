@@ -204,13 +204,13 @@ export default function Stage6StockUpdate({
             <table className="w-full text-left text-xs font-sans">
               <thead className="bg-slate-50 text-slate-600 uppercase font-mono text-[10px] tracking-wider border-b border-slate-200 font-bold">
                 <tr>
-                  <th className="p-4">Rank FEFO</th>
-                  <th className="p-4 min-w-[220px]">Nama Barang / Obat</th>
-                  <th className="p-4">No. Batch</th>
-                  <th className="p-4">Tgl Kadaluarsa (Expiry)</th>
-                  <th className="p-4">Stok Fisik Tersedia</th>
-                  <th className="p-4">Lokasi Asal</th>
-                  <th className="p-4 text-right">Tindakan Transfer</th>
+                  <th className="p-4 whitespace-nowrap">Rank FEFO</th>
+                  <th className="p-4 min-w-[220px] whitespace-nowrap">Nama Barang / Obat</th>
+                  <th className="p-4 whitespace-nowrap">No. Batch</th>
+                  <th className="p-4 whitespace-nowrap">Tgl Kadaluarsa (Expiry)</th>
+                  <th className="p-4 whitespace-nowrap">Stok Fisik Tersedia</th>
+                  <th className="p-4 whitespace-nowrap">Lokasi Asal</th>
+                  <th className="p-4 text-right whitespace-nowrap min-w-[160px]">Tindakan Transfer</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 font-sans">
@@ -219,8 +219,8 @@ export default function Stage6StockUpdate({
                   return (
                     <tr key={med.id} className="hover:bg-slate-50 transition-colors">
                       
-                      <td className="p-4 font-mono font-bold">
-                        <span className={`px-2.5 py-1 rounded-xl text-xs font-bold inline-flex items-center justify-center ${
+                      <td className="p-4 font-mono font-bold whitespace-nowrap">
+                        <span className={`px-2.5 py-1 rounded-xl text-xs font-bold inline-flex items-center justify-center whitespace-nowrap ${
                           actualRank === 1 
                             ? 'bg-red-100 text-red-800 border border-red-300' 
                             : actualRank <= 3 
@@ -231,7 +231,7 @@ export default function Stage6StockUpdate({
                         </span>
                       </td>
 
-                      <td className="p-4">
+                      <td className="p-4 min-w-[200px]">
                         <div className="font-extrabold text-slate-900 text-sm">{med.name}</div>
                         <div className="text-[11px] text-slate-500 font-medium mt-0.5">{med.dosage} • {med.category}</div>
                       </td>
@@ -251,16 +251,16 @@ export default function Stage6StockUpdate({
                         {med.currentStock} {med.unit}
                       </td>
 
-                      <td className="p-4 text-slate-600 text-xs font-sans font-medium">
+                      <td className="p-4 text-slate-600 text-xs font-sans font-medium whitespace-nowrap">
                         {med.location}
                       </td>
 
-                      <td className="p-4 text-right whitespace-nowrap">
+                      <td className="p-4 text-right whitespace-nowrap min-w-[160px]">
                         <button
                           onClick={() => handleOpenTransferModal(med)}
-                          className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs rounded-xl shadow-md shadow-indigo-500/20 transition-all inline-flex items-center gap-1.5"
+                          className="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs rounded-xl shadow-md shadow-indigo-500/20 transition-all inline-flex items-center gap-1.5 whitespace-nowrap"
                         >
-                          <Send className="w-3.5 h-3.5" />
+                          <Send className="w-3.5 h-3.5 shrink-0" />
                           Transfer Ke Depo
                         </button>
                       </td>
