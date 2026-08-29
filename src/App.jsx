@@ -13,6 +13,7 @@ import Stage7InvoicePayment from './components/Stage7InvoicePayment';
 import AuditTrailModal from './components/AuditTrailModal';
 import ExcelImportModal from './components/ExcelImportModal';
 import GoogleSheetsModal from './components/GoogleSheetsModal';
+import Footer from './components/Footer';
 import { getWIBTimestamp } from './utils/timeUtils';
 import { ROLES, isStageAuthorized } from './config/rbac';
 import { REGISTERED_STAFF } from './config/auth';
@@ -455,6 +456,7 @@ function MainApp() {
               openAuditLog={() => setIsAuditModalOpen(true)}
             />
           )}
+          <Footer />
         </main>
       </div>
 

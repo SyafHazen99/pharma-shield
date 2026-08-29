@@ -174,8 +174,9 @@ export default function DirectorDashboard({
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 text-white p-6 shadow-xl shadow-blue-500/10">
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 text-white text-xs font-semibold backdrop-blur-md whitespace-nowrap">
-              <Sparkles className="w-3.5 h-3.5 text-white animate-spin shrink-0" /> Integrated Real Audit BI Dashboard (Stok Sistem × Harga Beli)
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-2xl sm:rounded-full bg-white/20 text-white text-[10px] sm:text-xs font-semibold backdrop-blur-md max-w-full leading-normal">
+              <Sparkles className="w-3.5 h-3.5 text-white animate-spin shrink-0" />
+              <span>Integrated Real Audit BI Dashboard (Stok Sistem × Harga Beli)</span>
             </div>
             <h2 className="text-2xl lg:text-3xl font-extrabold text-white tracking-tight">
               Executive Command Center — dr. Novia Dwi Anggraini

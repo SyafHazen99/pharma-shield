@@ -26,35 +26,11 @@ export default function Navbar({
 
   const roleInfo = ROLES[activeRole] || ROLES.DIRECTOR;
 
-  const projectLeaderName = typeof BRANDING.team?.projectLeader === 'object' 
-    ? BRANDING.team.projectLeader.name 
-    : (BRANDING.team?.projectLeader || 'dr. Novia Dwi Anggraini');
-
-  const qcDesignerName = typeof BRANDING.team?.qcEngineerAndDesigner === 'object' 
-    ? BRANDING.team.qcEngineerAndDesigner.name 
-    : (BRANDING.team?.qcEngineerAndDesigner || 'Asyraf Hadi');
-
   return (
-    <header className="sticky top-0 z-40 font-sans shadow-sm">
+    <header className="sticky top-0 z-40 font-sans shadow-sm bg-white border-b border-slate-200">
       
-      {/* Top Clinical Bar - Hidden on mobile (< md) to save screen space and prevent horizontal scroll */}
-      <div className="hidden md:flex bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 text-white px-4 py-1 text-[11px] font-mono items-center justify-between gap-2 border-b border-blue-500/40">
-        <div className="flex items-center gap-3">
-          <span>📧 contact@sentra.health</span>
-          <span className="text-blue-300">|</span>
-          <span>📞 Hotline: +62 21 5589 55488</span>
-        </div>
-
-        {/* Leadership Credits */}
-        <div className="flex items-center gap-2 text-[10px]">
-          <span>Leader: <strong className="text-white font-bold">{projectLeaderName}</strong></span>
-          <span className="text-blue-300">|</span>
-          <span>QC & Design: <strong className="text-white font-bold">{qcDesignerName}</strong></span>
-        </div>
-      </div>
-
-      {/* Main Single-Row Navbar - Clean & Compact (Zero Horizontal Scrollbar on Mobile) */}
-      <nav className="bg-white border-b border-slate-200 px-3 sm:px-4 py-2 flex items-center justify-between gap-2 max-w-full relative z-30">
+      {/* Main Single-Row Navbar (Logo + App Title on Left, Live WIB Clock on Right) */}
+      <nav className="px-3 sm:px-4 py-2 flex items-center justify-between gap-2 max-w-full relative z-30">
         
         {/* Left: Official RSIA Logo & System Title */}
         <div className="flex items-center gap-2 shrink-0">
@@ -78,36 +54,36 @@ export default function Navbar({
           </div>
         </div>
 
-        {/* Right: Compact User Profile & Role Switcher */}
+        {/* Right: Controls & Prominent Live WIB Clock */}
         <div className="flex items-center gap-1.5 shrink-0 font-sans text-xs">
           
-          {/* Prominent Bright Live WIB Clock (Desktop only) */}
-          <div className="shrink-0 hidden lg:block">
+          {/* Prominent Bright Live WIB Clock (Visible on Mobile & Desktop!) */}
+          <div className="shrink-0">
             <LiveWibClock />
           </div>
 
-          {/* User Profile Chip */}
-          <div className="flex items-center gap-1 sm:gap-1.5 p-1 px-1.5 sm:px-2.5 rounded-lg bg-slate-50 border border-slate-200 shrink-0">
-            <div className="w-5 sm:w-6 h-5 sm:h-6 rounded-md bg-blue-600 text-white flex items-center justify-center font-bold shrink-0">
-              <Stethoscope className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-white" />
+          {/* Desktop-Only User Profile Chip & Role Switcher */}
+          <div className="hidden lg:flex items-center gap-1.5 p-1 px-2.5 rounded-lg bg-slate-50 border border-slate-200 shrink-0">
+            <div className="w-6 h-6 rounded-md bg-blue-600 text-white flex items-center justify-center font-bold shrink-0">
+              <Stethoscope className="w-3.5 h-3.5 text-white" />
             </div>
-            <div className="font-extrabold text-slate-900 text-[10px] sm:text-[11px] whitespace-nowrap truncate max-w-[90px] sm:max-w-none">
+            <div className="font-extrabold text-slate-900 text-[11px] whitespace-nowrap">
               {currentUser?.name || 'dr. Novia Dwi Anggraini'}
             </div>
-            <span className="hidden sm:inline-block px-1.5 py-0.5 rounded text-[9px] font-bold bg-blue-100 text-blue-800 border border-blue-200 whitespace-nowrap shrink-0">
+            <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-blue-100 text-blue-800 border border-blue-200 whitespace-nowrap shrink-0">
               {roleInfo.roomScope === 'ALL' ? 'Super Admin' : (roleInfo.roomScope || 'Gudang')}
             </span>
           </div>
 
-          {/* Role Switcher Dropdown */}
-          <div className="relative shrink-0">
+          {/* Desktop Role Switcher Dropdown */}
+          <div className="relative shrink-0 hidden lg:block">
             <button
               onClick={() => setShowRoleDropdown(!showRoleDropdown)}
-              className="px-2 sm:px-2.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-[10px] sm:text-[11px] font-bold flex items-center gap-1 transition-all whitespace-nowrap shadow-sm"
+              className="px-2.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-[11px] font-bold flex items-center gap-1 transition-all whitespace-nowrap shadow-sm"
               title="Pilih Wewenang & Filter Ruangan RS"
             >
-              <UserCheck className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-white shrink-0" />
-              <span className="hidden sm:inline">Role Switcher</span>
+              <UserCheck className="w-3.5 h-3.5 text-white shrink-0" />
+              <span>Role Switcher</span>
               <ChevronDown className="w-3 h-3 shrink-0" />
             </button>
 
@@ -145,10 +121,10 @@ export default function Navbar({
             )}
           </div>
 
-          {/* Desktop-only Quick Action Buttons (On mobile, these are inside the Mobile Navigation Drawer) */}
+          {/* Desktop Quick Actions */}
           <button
             onClick={openGoogleSheetsModal}
-            className="hidden md:flex px-2.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-[11px] font-bold items-center gap-1 transition-all shadow-sm whitespace-nowrap shrink-0"
+            className="hidden lg:flex px-2.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-[11px] font-bold items-center gap-1 transition-all shadow-sm whitespace-nowrap shrink-0"
             title="Sinkronisasi Otomatis Google Sheets dr. Novia"
           >
             <Zap className="w-3.5 h-3.5 text-white shrink-0" />
@@ -157,7 +133,7 @@ export default function Navbar({
 
           <button
             onClick={openExcelModal}
-            className="hidden md:flex px-2.5 py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-lg text-[11px] font-bold items-center gap-1 transition-all shadow-sm whitespace-nowrap shrink-0"
+            className="hidden lg:flex px-2.5 py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-lg text-[11px] font-bold items-center gap-1 transition-all shadow-sm whitespace-nowrap shrink-0"
             title="Import Spreadsheet Excel (.xlsx) dr. Novia Dwi Anggraini"
           >
             <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
@@ -166,7 +142,7 @@ export default function Navbar({
 
           <button
             onClick={openAuditLog}
-            className="hidden md:flex px-2.5 py-1.5 bg-slate-100 hover:bg-blue-50 text-slate-700 hover:text-blue-700 border border-slate-200 rounded-lg text-[11px] font-bold items-center gap-1 relative whitespace-nowrap shrink-0"
+            className="hidden lg:flex px-2.5 py-1.5 bg-slate-100 hover:bg-blue-50 text-slate-700 hover:text-blue-700 border border-slate-200 rounded-lg text-[11px] font-bold items-center gap-1 relative whitespace-nowrap shrink-0"
             title="Buka Audit Log Real-Time"
           >
             <ShieldAlert className="w-3.5 h-3.5 text-blue-600 shrink-0" />
@@ -178,7 +154,7 @@ export default function Navbar({
 
           <button
             onClick={onLogout}
-            className="hidden md:flex p-1.5 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-lg text-xs font-bold transition-all items-center justify-center shrink-0"
+            className="hidden lg:flex p-1.5 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-lg text-xs font-bold transition-all items-center justify-center shrink-0"
             title="Keluar dari Sistem"
           >
             <LogOut className="w-3.5 h-3.5" />
