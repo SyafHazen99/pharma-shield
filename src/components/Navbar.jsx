@@ -37,24 +37,24 @@ export default function Navbar({
   return (
     <header className="sticky top-0 z-40 font-sans shadow-sm">
       
-      {/* Top Clinical Bar */}
-      <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 text-white px-3 sm:px-4 py-1 text-[10px] sm:text-[11px] font-mono flex items-center justify-between gap-2 border-b border-blue-500/40 overflow-x-auto whitespace-nowrap">
+      {/* Top Clinical Bar - Hidden on mobile (< md) to save 30px screen space */}
+      <div className="hidden md:flex bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 text-white px-4 py-1 text-[11px] font-mono items-center justify-between gap-2 border-b border-blue-500/40">
         <div className="flex items-center gap-3">
           <span>📧 contact@sentra.health</span>
-          <span className="hidden sm:inline text-blue-300">|</span>
-          <span className="hidden sm:inline">📞 Hotline: +62 21 5589 55488</span>
+          <span className="text-blue-300">|</span>
+          <span>📞 Hotline: +62 21 5589 55488</span>
         </div>
 
         {/* Leadership Credits */}
-        <div className="flex items-center gap-2 text-[9px] sm:text-[10px]">
+        <div className="flex items-center gap-2 text-[10px]">
           <span>Leader: <strong className="text-white font-bold">{projectLeaderName}</strong></span>
           <span className="text-blue-300">|</span>
           <span>QC & Design: <strong className="text-white font-bold">{qcDesignerName}</strong></span>
         </div>
       </div>
 
-      {/* Main Responsive Navbar */}
-      <nav className="bg-white border-b border-slate-200 px-3 sm:px-4 py-2 flex items-center justify-between gap-2 max-w-full relative z-30 overflow-x-auto">
+      {/* Main Mobile-Responsive Navbar */}
+      <nav className="bg-white border-b border-slate-200 px-3 sm:px-4 py-2 flex items-center justify-between gap-2 max-w-full relative z-30">
         
         {/* Left: Official RSIA Logo & System Title */}
         <div className="flex items-center gap-2 shrink-0">
@@ -64,8 +64,8 @@ export default function Navbar({
             className="h-7 sm:h-8 md:h-9 w-auto object-contain shrink-0" 
           />
           <div className="flex flex-col justify-center">
-            <div className="flex items-center gap-1.5">
-              <h1 className="text-xs sm:text-sm font-extrabold tracking-tight text-slate-900 leading-none">
+            <div className="flex items-center gap-1">
+              <h1 className="text-xs sm:text-sm font-extrabold tracking-tight text-slate-900 leading-none whitespace-nowrap">
                 {BRANDING.appName}
               </h1>
               <span className="px-1.5 py-0.2 rounded-full text-[8px] font-mono bg-blue-50 text-blue-700 border border-blue-200 font-bold whitespace-nowrap">
@@ -79,20 +79,20 @@ export default function Navbar({
         </div>
 
         {/* Right: Aligned Controls with Responsive Sizing */}
-        <div className="flex items-center gap-1.5 shrink-0 font-sans text-xs">
+        <div className="flex items-center gap-1 sm:gap-1.5 shrink-0 font-sans text-xs">
           
-          {/* Prominent Bright Live WIB Clock */}
+          {/* Prominent Bright Live WIB Clock (Desktop only) */}
           <div className="shrink-0 hidden lg:block">
             <LiveWibClock />
           </div>
 
-          {/* User Profile Chip */}
-          <div className="flex items-center gap-1.5 p-1 px-2 rounded-lg bg-slate-50 border border-slate-200 shrink-0">
+          {/* Compact User Profile Chip */}
+          <div className="flex items-center gap-1 sm:gap-1.5 p-1 px-1.5 sm:px-2.5 rounded-lg bg-slate-50 border border-slate-200 shrink-0">
             <div className="w-5 sm:w-6 h-5 sm:h-6 rounded-md bg-blue-600 text-white flex items-center justify-center font-bold shrink-0">
               <Stethoscope className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-white" />
             </div>
             <div className="font-extrabold text-slate-900 text-[10px] sm:text-[11px] whitespace-nowrap">
-              {currentUser?.name || 'dr. Novia Dwi Anggraini'}
+              {currentUser?.name ? currentUser.name.split(' ')[0] + ' ' + (currentUser.name.split(' ')[1] || '') : 'dr. Novia'}
             </div>
             <span className="hidden sm:inline-block px-1.5 py-0.5 rounded text-[9px] font-bold bg-blue-100 text-blue-800 border border-blue-200 whitespace-nowrap shrink-0">
               {roleInfo.roomScope === 'ALL' ? 'Super Admin' : (roleInfo.roomScope || 'Gudang')}

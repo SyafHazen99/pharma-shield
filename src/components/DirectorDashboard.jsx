@@ -303,18 +303,18 @@ export default function DirectorDashboard({
 
       {/* SECTION: Ultra-Premium Room Valuation Matrix (Spacious 5-Card Layout) */}
       <div className="space-y-4">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
           <div>
-            <h3 className="text-base font-extrabold text-slate-900 flex items-center gap-2 font-sans">
-              <Building2 className="w-5 h-5 text-blue-600" />
-              Valuasi Stok Real Audit Per Ruangan (Stok Sistem × Harga Beli)
+            <h3 className="text-sm sm:text-base font-extrabold text-slate-900 flex items-center gap-2 font-sans">
+              <Building2 className="w-5 h-5 text-blue-600 shrink-0" />
+              <span>Valuasi Stok Real Audit Per Ruangan (Stok Sistem × Harga Beli)</span>
             </h3>
             <p className="text-xs text-slate-500 font-medium mt-0.5">
               Analisis kontribusi nilai persediaan masing-masing depo terhadap Total Valuasi RSIA Melinda ({formatRupiah(totalMasterValuation)}).
             </p>
           </div>
 
-          <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-mono font-bold border border-blue-200 whitespace-nowrap inline-flex items-center justify-center shrink-0">
+          <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-mono font-bold border border-blue-200 whitespace-nowrap inline-flex items-center justify-center shrink-0 self-start sm:self-auto">
             Audit Standard dr. Novia Dwi Anggraini
           </span>
         </div>
@@ -535,7 +535,7 @@ export default function DirectorDashboard({
           {auditLogs.slice(0, 4).map((log) => (
             <div 
               key={log?.id || Math.random()} 
-              className={`p-4 rounded-2xl border flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs transition-all ${
+              className={`p-3.5 sm:p-4 rounded-2xl border flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs transition-all ${
                 log?.riskLevel === 'CRITICAL' || log?.riskLevel === 'HIGH'
                   ? 'bg-red-50 border-red-200 text-red-900'
                   : 'bg-slate-50 border-slate-200 text-slate-800'
@@ -547,18 +547,18 @@ export default function DirectorDashboard({
                 }`}>
                   <Activity className="w-4 h-4" />
                 </div>
-                <div>
-                  <div className="font-bold text-slate-900 flex items-center gap-2 font-mono">
+                <div className="space-y-1">
+                  <div className="font-bold text-slate-900 flex flex-wrap items-center gap-1.5 font-mono text-xs">
                     <span>{log?.action}</span>
-                    <span className="px-2 py-0.5 rounded-full text-[10px] bg-white border border-slate-200 text-slate-600 font-semibold">
+                    <span className="px-2 py-0.5 rounded-full text-[10px] bg-white border border-slate-200 text-slate-600 font-semibold leading-none">
                       {log?.actor} ({log?.role})
                     </span>
                   </div>
-                  <p className="text-slate-600 mt-1 leading-relaxed font-sans">{log?.details}</p>
+                  <p className="text-slate-600 leading-relaxed font-sans text-xs">{log?.details}</p>
                 </div>
               </div>
 
-              <div className="shrink-0 text-right font-mono text-[11px] text-slate-500 font-semibold">
+              <div className="shrink-0 text-left md:text-right font-mono text-[11px] text-slate-400 font-semibold">
                 {log?.timestamp}
               </div>
             </div>
