@@ -175,9 +175,6 @@ export default function Stage1Monitoring({
               {roleConfig.name}
             </span>
           </h2>
-          <p className="text-xs text-slate-500 font-medium mt-0.5">
-            Single Source of Truth (`MASTER_ITEM`) • Input Terkunci • Otomasi 80% Audit Standard dr. Novia Dwi Anggraini.
-          </p>
         </div>
 
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full md:w-auto shrink-0">

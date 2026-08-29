@@ -339,8 +339,6 @@ function MainApp() {
         openExcelModal={() => setIsExcelModalOpen(true)}
         openGoogleSheetsModal={() => setIsGoogleSheetsModalOpen(true)}
         criticalAlertCount={criticalAlertCount}
-        onToggleMobileMenu={() => setMobileMenuOpen(!mobileMenuOpen)}
-        isMobileMenuOpen={mobileMenuOpen}
       />
 
       {/* Main Body */}
@@ -358,8 +356,6 @@ function MainApp() {
           openExcelModal={() => setIsExcelModalOpen(true)}
           openGoogleSheetsModal={() => setIsGoogleSheetsModalOpen(true)}
           onLogout={handleLogout}
-          mobileMenuOpen={mobileMenuOpen}
-          setMobileMenuOpen={setMobileMenuOpen}
         />
 
         {/* Center Content View Area */}

@@ -181,9 +181,6 @@ export default function DirectorDashboard({
             <h2 className="text-2xl lg:text-3xl font-extrabold text-white tracking-tight">
               Executive Command Center — dr. Novia Dwi Anggraini
             </h2>
-            <p className="text-sm text-blue-100 max-w-3xl leading-relaxed font-medium">
-              Integrasi Valuasi Real Audit 5 File Spreadsheet (Gudang, Rawat Inap, Rawat Jalan, OK, Ruang Bayi) • Total Valuasi RS: <strong>{formatRupiah(totalMasterValuation)}</strong>.
-            </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">
