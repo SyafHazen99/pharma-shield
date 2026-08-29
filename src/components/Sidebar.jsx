@@ -64,8 +64,8 @@ export default function Sidebar({
 
   return (
     <>
-      {/* MOBILE TOP NAVIGATION BAR (Hamburger Button + Active Stage Indicator) */}
-      <div className="lg:hidden bg-white border-b border-slate-200 px-3.5 py-2.5 flex items-center justify-between shadow-sm sticky top-0 z-30 font-sans max-w-full overflow-hidden">
+      {/* PERFECT LOCKED FIXED MOBILE TOP NAVIGATION BAR (Fixed top-0 left-0 right-0 z-50 at all times!) */}
+      <div className="lg:hidden bg-white border-b border-slate-200 px-3.5 py-2.5 flex items-center justify-between shadow-md fixed top-0 left-0 right-0 z-50 font-sans max-w-full overflow-hidden">
         <div className="flex items-center gap-2.5 min-w-0">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
