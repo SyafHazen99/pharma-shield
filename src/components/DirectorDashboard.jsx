@@ -311,10 +311,6 @@ export default function DirectorDashboard({
               Analisis kontribusi nilai persediaan masing-masing depo terhadap Total Valuasi RSIA Melinda ({formatRupiah(totalMasterValuation)}).
             </p>
           </div>
-
-          <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-mono font-bold border border-blue-200 whitespace-nowrap inline-flex items-center justify-center shrink-0 self-start sm:self-auto">
-            Audit Standard dr. Novia Dwi Anggraini
-          </span>
         </div>
 
         {/* Executive 5-Card Grid (Ultra-Responsive & Zero-Overflow) */}
