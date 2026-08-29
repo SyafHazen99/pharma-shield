@@ -37,26 +37,26 @@ export default function Navbar({
       <nav className="px-3 sm:px-4 py-2 flex items-center justify-between gap-2 max-w-full relative z-30">
         
         {/* Left: Hamburger Button + Official RSIA Logo & System Title */}
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           
           {/* Hamburger Menu Toggle Button (Visible on mobile/tablet < lg) */}
           <button
             onClick={onToggleMobileMenu}
-            className="lg:hidden p-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-all flex items-center justify-center font-bold shadow-md shadow-blue-500/20 active:scale-95 shrink-0"
+            className="lg:hidden p-1.5 sm:p-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-all flex items-center justify-center font-bold shadow-md shadow-blue-500/20 active:scale-95 shrink-0"
             aria-label="Toggle Mobile Menu"
           >
-            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {isMobileMenuOpen ? <X className="w-4 sm:w-5 h-4 sm:h-5" /> : <Menu className="w-4 sm:w-5 h-4 sm:h-5" />}
           </button>
 
           {/* Official RSIA Melinda Logo */}
           <img 
             src={BRANDING.logoUrl} 
             alt="SENTRA Healthcare AI Logo" 
-            className="h-7 sm:h-8 md:h-9 w-auto object-contain shrink-0" 
+            className="h-6 sm:h-8 md:h-9 w-auto object-contain shrink-0" 
           />
 
-          {/* System Title */}
-          <div className="flex flex-col justify-center">
+          {/* System Title (Hidden on tiny mobile screens, visible on sm and up) */}
+          <div className="hidden sm:flex flex-col justify-center">
             <div className="flex items-center gap-1">
               <h1 className="text-xs sm:text-sm font-extrabold tracking-tight text-slate-900 leading-none whitespace-nowrap">
                 {BRANDING.appName}
