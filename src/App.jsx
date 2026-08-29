@@ -347,8 +347,13 @@ function MainApp() {
           activeStage={activeStage}
           setActiveStage={setActiveStage}
           activeRole={activeRole}
+          setActiveRole={setActiveRole}
           currentUser={currentUser}
           pendingCounts={pendingCounts}
+          openAuditLog={() => setIsAuditModalOpen(true)}
+          openExcelModal={() => setIsExcelModalOpen(true)}
+          openGoogleSheetsModal={() => setIsGoogleSheetsModalOpen(true)}
+          onLogout={handleLogout}
         />
 
         {/* Center Content View Area */}

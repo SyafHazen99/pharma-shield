@@ -37,7 +37,7 @@ export default function Navbar({
   return (
     <header className="sticky top-0 z-40 font-sans shadow-sm">
       
-      {/* Top Clinical Bar - Hidden on mobile (< md) to save 30px screen space */}
+      {/* Top Clinical Bar - Hidden on mobile (< md) to save screen space and prevent horizontal scroll */}
       <div className="hidden md:flex bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 text-white px-4 py-1 text-[11px] font-mono items-center justify-between gap-2 border-b border-blue-500/40">
         <div className="flex items-center gap-3">
           <span>📧 contact@sentra.health</span>
@@ -53,7 +53,7 @@ export default function Navbar({
         </div>
       </div>
 
-      {/* Main Mobile-Responsive Navbar */}
+      {/* Main Single-Row Navbar - Clean & Compact (Zero Horizontal Scrollbar on Mobile) */}
       <nav className="bg-white border-b border-slate-200 px-3 sm:px-4 py-2 flex items-center justify-between gap-2 max-w-full relative z-30">
         
         {/* Left: Official RSIA Logo & System Title */}
@@ -78,28 +78,28 @@ export default function Navbar({
           </div>
         </div>
 
-        {/* Right: Aligned Controls with Responsive Sizing */}
-        <div className="flex items-center gap-1 sm:gap-1.5 shrink-0 font-sans text-xs">
+        {/* Right: Compact User Profile & Role Switcher */}
+        <div className="flex items-center gap-1.5 shrink-0 font-sans text-xs">
           
           {/* Prominent Bright Live WIB Clock (Desktop only) */}
           <div className="shrink-0 hidden lg:block">
             <LiveWibClock />
           </div>
 
-          {/* Compact User Profile Chip */}
+          {/* User Profile Chip */}
           <div className="flex items-center gap-1 sm:gap-1.5 p-1 px-1.5 sm:px-2.5 rounded-lg bg-slate-50 border border-slate-200 shrink-0">
             <div className="w-5 sm:w-6 h-5 sm:h-6 rounded-md bg-blue-600 text-white flex items-center justify-center font-bold shrink-0">
               <Stethoscope className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-white" />
             </div>
-            <div className="font-extrabold text-slate-900 text-[10px] sm:text-[11px] whitespace-nowrap">
-              {currentUser?.name ? currentUser.name.split(' ')[0] + ' ' + (currentUser.name.split(' ')[1] || '') : 'dr. Novia'}
+            <div className="font-extrabold text-slate-900 text-[10px] sm:text-[11px] whitespace-nowrap truncate max-w-[90px] sm:max-w-none">
+              {currentUser?.name || 'dr. Novia Dwi Anggraini'}
             </div>
             <span className="hidden sm:inline-block px-1.5 py-0.5 rounded text-[9px] font-bold bg-blue-100 text-blue-800 border border-blue-200 whitespace-nowrap shrink-0">
               {roleInfo.roomScope === 'ALL' ? 'Super Admin' : (roleInfo.roomScope || 'Gudang')}
             </span>
           </div>
 
-          {/* Always Available Super Admin Role Switcher Dropdown */}
+          {/* Role Switcher Dropdown */}
           <div className="relative shrink-0">
             <button
               onClick={() => setShowRoleDropdown(!showRoleDropdown)}
@@ -145,43 +145,40 @@ export default function Navbar({
             )}
           </div>
 
-          {/* Google Sheets Live Sync Button */}
+          {/* Desktop-only Quick Action Buttons (On mobile, these are inside the Mobile Navigation Drawer) */}
           <button
             onClick={openGoogleSheetsModal}
-            className="px-2 sm:px-2.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-[10px] sm:text-[11px] font-bold flex items-center gap-1 transition-all shadow-sm whitespace-nowrap shrink-0"
+            className="hidden md:flex px-2.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-[11px] font-bold items-center gap-1 transition-all shadow-sm whitespace-nowrap shrink-0"
             title="Sinkronisasi Otomatis Google Sheets dr. Novia"
           >
-            <Zap className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-white shrink-0" />
-            <span className="hidden sm:inline">Sheets Sync</span>
+            <Zap className="w-3.5 h-3.5 text-white shrink-0" />
+            <span>Sheets Sync</span>
           </button>
 
-          {/* Import Excel Button */}
           <button
             onClick={openExcelModal}
-            className="px-2 sm:px-2.5 py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-lg text-[10px] sm:text-[11px] font-bold flex items-center gap-1 transition-all shadow-sm whitespace-nowrap shrink-0"
+            className="hidden md:flex px-2.5 py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-lg text-[11px] font-bold items-center gap-1 transition-all shadow-sm whitespace-nowrap shrink-0"
             title="Import Spreadsheet Excel (.xlsx) dr. Novia Dwi Anggraini"
           >
-            <FileSpreadsheet className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-emerald-600 shrink-0" />
-            <span className="hidden sm:inline">Excel</span>
+            <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+            <span>Excel</span>
           </button>
 
-          {/* Global Audit Log Inspector Trigger */}
           <button
             onClick={openAuditLog}
-            className="px-2 sm:px-2.5 py-1.5 bg-slate-100 hover:bg-blue-50 text-slate-700 hover:text-blue-700 border border-slate-200 rounded-lg text-[10px] sm:text-[11px] font-bold flex items-center gap-1 relative whitespace-nowrap shrink-0"
+            className="hidden md:flex px-2.5 py-1.5 bg-slate-100 hover:bg-blue-50 text-slate-700 hover:text-blue-700 border border-slate-200 rounded-lg text-[11px] font-bold items-center gap-1 relative whitespace-nowrap shrink-0"
             title="Buka Audit Log Real-Time"
           >
-            <ShieldAlert className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-blue-600 shrink-0" />
-            <span className="hidden sm:inline">Audit</span>
+            <ShieldAlert className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+            <span>Audit</span>
             {criticalAlertCount > 0 && (
               <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse absolute -top-0.5 -right-0.5 border border-white" />
             )}
           </button>
 
-          {/* Logout Button */}
           <button
             onClick={onLogout}
-            className="p-1.5 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-lg text-xs font-bold transition-all flex items-center justify-center shrink-0"
+            className="hidden md:flex p-1.5 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-lg text-xs font-bold transition-all items-center justify-center shrink-0"
             title="Keluar dari Sistem"
           >
             <LogOut className="w-3.5 h-3.5" />
