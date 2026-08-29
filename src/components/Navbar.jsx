@@ -6,7 +6,9 @@ import {
   ChevronDown,
   FileSpreadsheet,
   Zap,
-  Stethoscope
+  Stethoscope,
+  Menu,
+  X
 } from 'lucide-react';
 import { BRANDING } from '../config/branding';
 import { ROLES } from '../config/rbac';
@@ -20,7 +22,9 @@ export default function Navbar({
   openAuditLog, 
   openExcelModal,
   openGoogleSheetsModal,
-  criticalAlertCount 
+  criticalAlertCount,
+  onToggleMobileMenu,
+  isMobileMenuOpen
 }) {
   const [showRoleDropdown, setShowRoleDropdown] = useState(false);
 
@@ -29,16 +33,29 @@ export default function Navbar({
   return (
     <header className="sticky top-0 z-40 font-sans shadow-sm bg-white border-b border-slate-200">
       
-      {/* Main Single-Row Navbar (Logo + App Title on Left, Live WIB Clock on Right) */}
+      {/* Main Responsive Top Navbar (Logo + App Title on Left, Live WIB Clock on Right) */}
       <nav className="px-3 sm:px-4 py-2 flex items-center justify-between gap-2 max-w-full relative z-30">
         
-        {/* Left: Official RSIA Logo & System Title */}
+        {/* Left: Hamburger Button + Official RSIA Logo & System Title */}
         <div className="flex items-center gap-2 shrink-0">
+          
+          {/* Hamburger Menu Toggle Button (Visible on mobile/tablet < lg) */}
+          <button
+            onClick={onToggleMobileMenu}
+            className="lg:hidden p-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-all flex items-center justify-center font-bold shadow-md shadow-blue-500/20 active:scale-95 shrink-0"
+            aria-label="Toggle Mobile Menu"
+          >
+            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+
+          {/* Official RSIA Melinda Logo */}
           <img 
             src={BRANDING.logoUrl} 
             alt="SENTRA Healthcare AI Logo" 
             className="h-7 sm:h-8 md:h-9 w-auto object-contain shrink-0" 
           />
+
+          {/* System Title */}
           <div className="flex flex-col justify-center">
             <div className="flex items-center gap-1">
               <h1 className="text-xs sm:text-sm font-extrabold tracking-tight text-slate-900 leading-none whitespace-nowrap">
@@ -54,10 +71,10 @@ export default function Navbar({
           </div>
         </div>
 
-        {/* Right: Controls & Prominent Live WIB Clock */}
+        {/* Right: Prominent Live WIB Clock & Desktop Controls */}
         <div className="flex items-center gap-1.5 shrink-0 font-sans text-xs">
           
-          {/* Prominent Bright Live WIB Clock (Visible on Mobile & Desktop!) */}
+          {/* Prominent Bright Live WIB Clock (ALWAYS VISIBLE on Mobile & Desktop!) */}
           <div className="shrink-0">
             <LiveWibClock />
           </div>
