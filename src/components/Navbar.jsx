@@ -6,7 +6,9 @@ import {
   ChevronDown,
   FileSpreadsheet,
   Zap,
-  Stethoscope
+  Stethoscope,
+  Menu,
+  X
 } from 'lucide-react';
 import { BRANDING } from '../config/branding';
 import { ROLES } from '../config/rbac';
@@ -20,21 +22,32 @@ export default function Navbar({
   openAuditLog, 
   openExcelModal,
   openGoogleSheetsModal,
-  criticalAlertCount
+  criticalAlertCount,
+  onToggleMobileMenu,
+  isMobileMenuOpen
 }) {
   const [showRoleDropdown, setShowRoleDropdown] = useState(false);
 
   const roleInfo = ROLES[activeRole] || ROLES.DIRECTOR;
 
   return (
-    <header className="sticky top-0 z-40 font-sans shadow-sm bg-white border-b border-slate-200">
+    <header className="sticky top-0 z-50 font-sans shadow-sm bg-white border-b border-slate-200">
       
-      {/* Main Top Header Bar (RSIA Logo + Title on Left, Live WIB Clock on Right) */}
+      {/* SINGLE COMBINED TOP HEADER (Hamburger + RSIA Logo + Title on Left, Live WIB Clock on Right) */}
       <nav className="px-3 sm:px-4 py-2 flex items-center justify-between gap-2 max-w-full relative z-30">
         
-        {/* Left: Official RSIA Logo & System Title */}
+        {/* Left: Hamburger Button + Official RSIA Logo & System Title */}
         <div className="flex items-center gap-2 shrink-0">
           
+          {/* Hamburger Menu Button (Visible on mobile/tablet < lg) */}
+          <button
+            onClick={onToggleMobileMenu}
+            className="lg:hidden p-1.5 sm:p-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-all flex items-center justify-center font-bold shadow-md shadow-blue-500/20 active:scale-95 shrink-0"
+            aria-label="Toggle Mobile Menu"
+          >
+            {isMobileMenuOpen ? <X className="w-4 sm:w-5 h-4 sm:h-5" /> : <Menu className="w-4 sm:w-5 h-4 sm:h-5" />}
+          </button>
+
           {/* Official RSIA Melinda Logo */}
           <img 
             src={BRANDING.logoUrl} 
