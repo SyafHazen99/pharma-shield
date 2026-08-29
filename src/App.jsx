@@ -339,6 +339,8 @@ function MainApp() {
         openExcelModal={() => setIsExcelModalOpen(true)}
         openGoogleSheetsModal={() => setIsGoogleSheetsModalOpen(true)}
         criticalAlertCount={criticalAlertCount}
+        onToggleMobileMenu={() => setMobileMenuOpen(!mobileMenuOpen)}
+        isMobileMenuOpen={mobileMenuOpen}
       />
 
       {/* Main Body */}
@@ -356,10 +358,12 @@ function MainApp() {
           openExcelModal={() => setIsExcelModalOpen(true)}
           openGoogleSheetsModal={() => setIsGoogleSheetsModalOpen(true)}
           onLogout={handleLogout}
+          mobileMenuOpen={mobileMenuOpen}
+          setMobileMenuOpen={setMobileMenuOpen}
         />
 
         {/* Center Content View Area */}
-        <main className="flex-1 p-3.5 sm:p-5 lg:p-8 pt-14 lg:pt-8 overflow-y-auto max-w-full">
+        <main className="flex-1 p-3.5 sm:p-5 lg:p-8 overflow-y-auto max-w-full">
           
           {/* Active Persona RBAC Banner Info */}
           <div className="mb-6 p-4 bg-white border-2 border-blue-500 shadow-md shadow-blue-500/10 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-sans">
