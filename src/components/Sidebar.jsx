@@ -16,7 +16,9 @@ import {
   UserCheck,
   Zap,
   FileSpreadsheet,
-  LogOut
+  LogOut,
+  Stethoscope,
+  ChevronDown
 } from 'lucide-react';
 import { ROLES, isStageAuthorized } from '../config/rbac';
 
@@ -44,6 +46,7 @@ export default function Sidebar({
   onLogout
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showRoleSelector, setShowRoleSelector] = useState(false);
 
   const currentRoleConfig = ROLES[activeRole] || ROLES.DIRECTOR;
   const isSuperAdmin = currentUser?.role === 'DIRECTOR' || activeRole === 'DIRECTOR' || activeRole === 'DIREKTUR_FERDI';
@@ -61,7 +64,7 @@ export default function Sidebar({
 
   return (
     <>
-      {/* PERFECT FIXED MOBILE TOP NAVIGATION BAR (Fixed pinned at top-0 left-0 right-0 z-50 at all times!) */}
+      {/* PERFECT STICKY MOBILE TOP NAVIGATION BAR */}
       <div className="lg:hidden bg-white border-b border-slate-200 px-3.5 py-2.5 flex items-center justify-between shadow-md fixed top-0 left-0 right-0 z-50 font-sans max-w-full overflow-hidden">
         <div className="flex items-center gap-2.5 min-w-0">
           <button
@@ -111,7 +114,7 @@ export default function Sidebar({
           <div className="flex items-center justify-between pb-3 border-b border-slate-100 lg:hidden">
             <div className="font-extrabold text-slate-900 text-sm flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-blue-600"></span>
-              <span>Menu & Kontrol Sistem</span>
+              <span>Menu Navigasi & Profil</span>
             </div>
             <button 
               onClick={() => setMobileMenuOpen(false)}
@@ -119,6 +122,68 @@ export default function Sidebar({
             >
               <X className="w-4 h-4" />
             </button>
+          </div>
+
+          {/* USER PROFILE & ROLE SWITCHER (Placed right at the top of Mobile Drawer) */}
+          <div className="lg:hidden p-3.5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-700 text-white space-y-3 shadow-md">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-white/20 text-white flex items-center justify-center font-bold shrink-0 border border-white/30">
+                <Stethoscope className="w-5 h-5" />
+              </div>
+              <div className="min-w-0">
+                <div className="text-[10px] font-mono text-blue-100 uppercase tracking-wider font-bold">User Terautentikasi</div>
+                <div className="font-extrabold text-white text-xs truncate">
+                  {currentUser?.name || 'dr. Novia Dwi Anggraini'}
+                </div>
+                <div className="text-[10px] text-blue-100 font-medium truncate">
+                  {currentUser?.roleTitle || 'Project Leader & Head of Healthcare AI'}
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile Role Switcher Interactive Selector */}
+            <div className="pt-2 border-t border-white/20">
+              <div className="text-[10px] font-mono text-blue-100 font-bold mb-1 uppercase tracking-wider">Wewenang / Role Switcher</div>
+              <button
+                onClick={() => setShowRoleSelector(!showRoleSelector)}
+                className="w-full px-3 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs font-extrabold flex items-center justify-between transition-all border border-white/20"
+              >
+                <div className="flex items-center gap-2 truncate">
+                  <UserCheck className="w-4 h-4 text-blue-200 shrink-0" />
+                  <span className="truncate">{currentRoleConfig.name}</span>
+                </div>
+                <ChevronDown className="w-4 h-4 shrink-0" />
+              </button>
+
+              {showRoleSelector && (
+                <div className="mt-2 bg-white text-slate-900 rounded-xl p-2 shadow-2xl border border-slate-200 space-y-1 animate-in fade-in duration-150">
+                  {Object.keys(ROLES).map((roleKey) => {
+                    const r = ROLES[roleKey];
+                    const isSelected = activeRole === roleKey;
+                    return (
+                      <button
+                        key={roleKey}
+                        onClick={() => {
+                          setActiveRole && setActiveRole(roleKey);
+                          setShowRoleSelector(false);
+                        }}
+                        className={`w-full text-left p-2 rounded-lg text-xs font-bold flex items-center justify-between transition-all ${
+                          isSelected ? 'bg-blue-600 text-white' : 'text-slate-700 hover:bg-blue-50'
+                        }`}
+                      >
+                        <div>
+                          <div>{r.name}</div>
+                          <div className={`text-[9px] font-mono ${isSelected ? 'text-blue-100' : 'text-slate-400'}`}>
+                            {r.roleTitle}
+                          </div>
+                        </div>
+                        {isSelected && <span>✓</span>}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Mobile Extra System Controls (Sync, Import, Audit, Logout) */}
