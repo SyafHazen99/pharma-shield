@@ -10,7 +10,9 @@ import {
   Receipt,
   Lock,
   ShieldAlert,
+  Menu,
   X,
+  ChevronRight,
   UserCheck,
   Zap,
   FileSpreadsheet,
@@ -41,10 +43,9 @@ export default function Sidebar({
   openAuditLog,
   openExcelModal,
   openGoogleSheetsModal,
-  onLogout,
-  mobileMenuOpen,
-  setMobileMenuOpen
+  onLogout
 }) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showRoleSelector, setShowRoleSelector] = useState(false);
 
   const currentRoleConfig = ROLES[activeRole] || ROLES.DIRECTOR;
@@ -54,17 +55,47 @@ export default function Sidebar({
     ? ALL_STAGES 
     : ALL_STAGES.filter(stage => isStageAuthorized(activeRole, stage.id));
 
+  const activeStageObj = ALL_STAGES.find(s => s.id === activeStage) || ALL_STAGES[0];
+
   const handleStageSelect = (stageId) => {
     setActiveStage(stageId);
-    setMobileMenuOpen && setMobileMenuOpen(false);
+    setMobileMenuOpen(false);
   };
 
   return (
     <>
+      {/* MOBILE HAMBURGER SUB-HEADER BAR (Sticky right below main top Navbar!) */}
+      <div className="lg:hidden bg-white border-b border-slate-200 px-3.5 py-2 flex items-center justify-between shadow-sm sticky top-[45px] z-30 font-sans max-w-full overflow-hidden">
+        <div className="flex items-center gap-2.5 min-w-0">
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-1.5 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-all flex items-center justify-center font-bold shadow-md shadow-blue-500/20 active:scale-95 shrink-0"
+            aria-label="Toggle Mobile Menu"
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+
+          <div className="min-w-0">
+            <div className="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-wider truncate">Tahapan Aktif</div>
+            <div className="text-xs font-extrabold text-slate-900 flex items-center gap-1 min-w-0">
+              <span className="truncate">{activeStageObj.title}</span>
+              <ChevronRight className="w-3 h-3 text-blue-600 shrink-0" />
+            </div>
+          </div>
+        </div>
+
+        <button
+          onClick={() => setMobileMenuOpen(true)}
+          className="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-blue-50 text-blue-700 border border-blue-200 whitespace-nowrap shrink-0"
+        >
+          {visibleStages.length} Tahapan
+        </button>
+      </div>
+
       {/* MOBILE SLIDE-OVER DRAWER BACKDROP */}
       {mobileMenuOpen && (
         <div 
-          onClick={() => setMobileMenuOpen && setMobileMenuOpen(false)}
+          onClick={() => setMobileMenuOpen(false)}
           className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 lg:hidden animate-in fade-in duration-200"
         />
       )}
@@ -86,7 +117,7 @@ export default function Sidebar({
               <span>Menu Navigasi & Profil</span>
             </div>
             <button 
-              onClick={() => setMobileMenuOpen && setMobileMenuOpen(false)}
+              onClick={() => setMobileMenuOpen(false)}
               className="p-1.5 rounded-xl bg-slate-100 text-slate-500 hover:text-slate-900"
             >
               <X className="w-4 h-4" />
@@ -162,7 +193,7 @@ export default function Sidebar({
               <button
                 onClick={() => {
                   openGoogleSheetsModal && openGoogleSheetsModal();
-                  setMobileMenuOpen && setMobileMenuOpen(false);
+                  setMobileMenuOpen(false);
                 }}
                 className="px-2.5 py-2 bg-emerald-600 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm"
               >
@@ -173,7 +204,7 @@ export default function Sidebar({
               <button
                 onClick={() => {
                   openExcelModal && openExcelModal();
-                  setMobileMenuOpen && setMobileMenuOpen(false);
+                  setMobileMenuOpen(false);
                 }}
                 className="px-2.5 py-2 bg-emerald-100 text-emerald-900 border border-emerald-300 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm"
               >
@@ -184,7 +215,7 @@ export default function Sidebar({
               <button
                 onClick={() => {
                   openAuditLog && openAuditLog();
-                  setMobileMenuOpen && setMobileMenuOpen(false);
+                  setMobileMenuOpen(false);
                 }}
                 className="px-2.5 py-2 bg-blue-50 text-blue-800 border border-blue-200 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm"
               >
@@ -195,7 +226,7 @@ export default function Sidebar({
               <button
                 onClick={() => {
                   onLogout && onLogout();
-                  setMobileMenuOpen && setMobileMenuOpen(false);
+                  setMobileMenuOpen(false);
                 }}
                 className="px-2.5 py-2 bg-red-50 text-red-700 border border-red-200 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm"
               >
