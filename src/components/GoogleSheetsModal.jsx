@@ -147,26 +147,26 @@ export default function GoogleSheetsModal({ isOpen, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4 font-sans">
-      <div className="bg-white w-full max-w-2xl p-6 rounded-3xl border border-slate-200 space-y-5 shadow-2xl animate-in fade-in zoom-in duration-200 max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 font-sans">
+      <div className="bg-white w-full max-w-2xl p-4 sm:p-6 rounded-3xl border border-slate-200 space-y-4 sm:space-y-5 shadow-2xl animate-in fade-in zoom-in duration-200 max-h-[92vh] overflow-y-auto">
         
         {/* Modal Header */}
         <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-          <div className="flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center font-bold">
-              <FileSpreadsheet className="w-5 h-5 text-emerald-600" />
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="w-9 sm:w-10 h-9 sm:h-10 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center font-bold shrink-0">
+              <FileSpreadsheet className="w-4 sm:w-5 h-4 sm:h-5 text-emerald-600" />
             </div>
-            <div>
-              <h3 className="text-base font-extrabold text-slate-900">
-                Panduan Integration Google Sheets (Option A: Live Webhook Sync)
+            <div className="min-w-0">
+              <h3 className="text-sm sm:text-base font-extrabold text-slate-900 truncate">
+                Integration Google Sheets (Live Webhook Sync)
               </h3>
-              <p className="text-xs text-slate-500 font-medium">
-                Otomatisasi Nama Obat & Item (Single Source of Truth) untuk Spreadsheet dr. Novia Dwi Anggraini
+              <p className="text-[10px] sm:text-xs text-slate-500 font-medium truncate">
+                Otomatisasi Nama Obat & Item untuk Spreadsheet dr. Novia Dwi Anggraini
               </p>
             </div>
           </div>
 
-          <button onClick={onClose} className="text-slate-400 hover:text-slate-700">
+          <button onClick={onClose} className="p-1.5 rounded-xl bg-slate-100 text-slate-400 hover:text-slate-700 shrink-0">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -175,10 +175,10 @@ export default function GoogleSheetsModal({ isOpen, onClose }) {
         <div className="space-y-4 text-xs">
           
           {/* Step 1 */}
-          <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-2">
+          <div className="p-3.5 sm:p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-2">
             <div className="font-extrabold text-slate-900 flex items-center gap-2">
-              <span className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-mono">1</span>
-              Buka Google Sheet dr. Novia & Tempelkan Script Ini:
+              <span className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-mono shrink-0">1</span>
+              <span>Buka Google Sheet dr. Novia & Tempelkan Script Ini:</span>
             </div>
             <p className="text-[11px] text-slate-600 font-medium">
               Di Google Sheets, klik menu <strong>Extensions ➔ Apps Script</strong>, hapus kode lama, lalu tempelkan kode di bawah ini:
@@ -200,10 +200,10 @@ export default function GoogleSheetsModal({ isOpen, onClose }) {
           </div>
 
           {/* Step 2 */}
-          <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-2">
+          <div className="p-3.5 sm:p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-2">
             <div className="font-extrabold text-slate-900 flex items-center gap-2">
-              <span className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-mono">2</span>
-              Deploy Sebagai Web App di Google Sheets:
+              <span className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-mono shrink-0">2</span>
+              <span>Deploy Sebagai Web App di Google Sheets:</span>
             </div>
             <ul className="list-disc list-inside text-[11px] text-slate-600 space-y-1 font-medium pl-1">
               <li>Di kanan atas Apps Script, klik tombol biru <strong>Deploy ➔ New Deployment</strong>.</li>
@@ -215,10 +215,10 @@ export default function GoogleSheetsModal({ isOpen, onClose }) {
           </div>
 
           {/* Step 3: Input Webhook URL */}
-          <form onSubmit={handleSaveConfig} className="p-4 bg-emerald-50/60 border border-emerald-200 rounded-2xl space-y-3">
-            <div className="font-extrabold text-emerald-900 flex items-center justify-between">
+          <form onSubmit={handleSaveConfig} className="p-3.5 sm:p-4 bg-emerald-50/60 border border-emerald-200 rounded-2xl space-y-3">
+            <div className="font-extrabold text-emerald-900 flex items-center justify-between gap-2 flex-wrap">
               <span className="flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-mono">3</span>
+                <span className="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-mono shrink-0">3</span>
                 Tempelkan Web App URL Di Sini:
               </span>
               {isConnected && (
@@ -228,19 +228,19 @@ export default function GoogleSheetsModal({ isOpen, onClose }) {
               )}
             </div>
 
-            <div className="flex gap-2">
+            <div className="flex flex-col sm:flex-row gap-2">
               <input
                 type="url"
                 required
                 placeholder="https://script.google.com/macros/s/.../exec"
                 value={webhookUrl}
                 onChange={(e) => setWebhookUrl(e.target.value)}
-                className="flex-1 bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 text-xs font-mono focus:ring-2 focus:ring-emerald-600"
+                className="w-full sm:flex-1 bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-slate-900 text-xs font-mono focus:ring-2 focus:ring-emerald-600"
               />
               <button
                 type="submit"
                 disabled={loading}
-                className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-md flex items-center gap-1.5 shrink-0"
+                className="w-full sm:w-auto px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-md flex items-center justify-center gap-1.5 shrink-0"
               >
                 <Link className="w-3.5 h-3.5" /> Simpan & Hubungkan
               </button>
@@ -256,11 +256,11 @@ export default function GoogleSheetsModal({ isOpen, onClose }) {
         </div>
 
         {/* Footer Actions */}
-        <div className="flex items-center justify-between pt-3 border-t border-slate-100">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 pt-3 border-t border-slate-100">
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-2xl"
+            className="w-full sm:w-auto px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl text-center"
           >
             Tutup
           </button>
@@ -270,9 +270,9 @@ export default function GoogleSheetsModal({ isOpen, onClose }) {
               type="button"
               onClick={handleTestSync}
               disabled={loading}
-              className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs rounded-2xl shadow-lg shadow-blue-500/25 flex items-center gap-2"
+              className="w-full sm:w-auto px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs rounded-xl shadow-lg shadow-blue-500/25 flex items-center justify-center gap-2"
             >
-              <Send className="w-4 h-4" /> Uji Coba Kirim Nama Obat ke Google Sheet
+              <Send className="w-4 h-4 shrink-0" /> Uji Coba Kirim Nama Obat ke Google Sheet
             </button>
           )}
         </div>

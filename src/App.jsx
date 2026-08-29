@@ -327,7 +327,7 @@ function MainApp() {
   const criticalAlertCount = auditLogs.filter(l => l?.riskLevel === 'CRITICAL' || l?.riskLevel === 'HIGH').length;
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-900 flex flex-col font-sans selection:bg-blue-600 selection:text-white">
+    <div className="h-screen bg-slate-100 text-slate-900 flex flex-col font-sans selection:bg-blue-600 selection:text-white overflow-hidden">
       
       {/* Top Navigation */}
       <Navbar
@@ -344,7 +344,7 @@ function MainApp() {
       />
 
       {/* Main Body */}
-      <div className="flex-1 flex flex-col lg:flex-row">
+      <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
         
         {/* Left Sidebar Pipeline Step Navigation */}
         <Sidebar
