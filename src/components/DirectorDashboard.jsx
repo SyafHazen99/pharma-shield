@@ -213,88 +213,88 @@ export default function DirectorDashboard({
         </div>
       )}
 
-      {/* KPI Cards Grid — Real Audit Valuations (Zero-Overflow Responsive Layout) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-sans">
+      {/* KPI Cards Grid — Compact 2x2 on Mobile, 4-Cols on Desktop */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 font-sans">
         
         {/* Card 1: Total Master Real Inventory Valuation */}
-        <div className="bg-white p-4 sm:p-5 rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-3 min-h-[130px] overflow-hidden">
-          <div className="flex items-start justify-between gap-2">
-            <span className="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider font-mono leading-tight">
+        <div className="bg-white p-3 sm:p-5 rounded-2xl sm:rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-2 overflow-hidden">
+          <div className="flex items-start justify-between gap-1">
+            <span className="text-[9px] sm:text-[11px] font-extrabold text-slate-500 uppercase tracking-wider font-mono leading-tight">
               Total Valuasi RS
             </span>
-            <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-100 shrink-0">
-              <DollarSign className="w-4 h-4" />
+            <div className="w-6 sm:w-8 h-6 sm:h-8 rounded-lg sm:rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-100 shrink-0">
+              <DollarSign className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
             </div>
           </div>
           <div className="overflow-hidden">
-            <div className="text-base sm:text-lg lg:text-xl font-extrabold text-slate-900 font-mono tracking-tight truncate">
+            <div className="text-xs sm:text-lg lg:text-xl font-extrabold text-slate-900 font-mono tracking-tight truncate">
               {formatRupiah(totalMasterValuation)}
             </div>
-            <div className="flex items-center gap-1 text-[11px] text-blue-700 mt-1 font-mono font-bold truncate">
-              <Boxes className="w-3.5 h-3.5 shrink-0" />
+            <div className="flex items-center gap-1 text-[9px] sm:text-[11px] text-blue-700 mt-0.5 font-mono font-bold truncate">
+              <Boxes className="w-3 sm:w-3.5 h-3 sm:h-3.5 shrink-0" />
               <span className="truncate">5 Depo • {totalMasterStock.toLocaleString('id-ID')} Unit</span>
             </div>
           </div>
         </div>
 
         {/* Card 2: Total Items Across 5 Files */}
-        <div className="bg-white p-4 sm:p-5 rounded-3xl border border-blue-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-3 min-h-[130px] overflow-hidden">
-          <div className="flex items-start justify-between gap-2">
-            <span className="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider font-mono leading-tight">
+        <div className="bg-white p-3 sm:p-5 rounded-2xl sm:rounded-3xl border border-blue-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-2 overflow-hidden">
+          <div className="flex items-start justify-between gap-1">
+            <span className="text-[9px] sm:text-[11px] font-extrabold text-slate-500 uppercase tracking-wider font-mono leading-tight">
               Total Audit Items
             </span>
-            <div className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center border border-indigo-100 shrink-0">
-              <Building2 className="w-4 h-4" />
+            <div className="w-6 sm:w-8 h-6 sm:h-8 rounded-lg sm:rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center border border-indigo-100 shrink-0">
+              <Building2 className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
             </div>
           </div>
           <div className="overflow-hidden">
-            <div className="text-base sm:text-lg lg:text-xl font-extrabold text-slate-900 font-mono tracking-tight truncate">
+            <div className="text-xs sm:text-lg lg:text-xl font-extrabold text-slate-900 font-mono tracking-tight truncate">
               {medicines.length.toLocaleString('id-ID')} SKUs
             </div>
-            <div className="flex items-center gap-1 text-[11px] text-indigo-700 mt-1 font-sans font-bold truncate">
-              <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
-              <span className="truncate">5 File Audit Terkunci</span>
+            <div className="flex items-center gap-1 text-[9px] sm:text-[11px] text-indigo-700 mt-0.5 font-sans font-bold truncate">
+              <CheckCircle2 className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-indigo-600 shrink-0" />
+              <span className="truncate">5 File Terkunci</span>
             </div>
           </div>
         </div>
 
         {/* Card 3: Fraud Prevention Savings */}
-        <div className="bg-white p-4 sm:p-5 rounded-3xl border border-emerald-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-3 min-h-[130px] overflow-hidden">
-          <div className="flex items-start justify-between gap-2">
-            <span className="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider font-mono leading-tight">
+        <div className="bg-white p-3 sm:p-5 rounded-2xl sm:rounded-3xl border border-emerald-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-2 overflow-hidden">
+          <div className="flex items-start justify-between gap-1">
+            <span className="text-[9px] sm:text-[11px] font-extrabold text-slate-500 uppercase tracking-wider font-mono leading-tight">
               Pencegahan Fraud
             </span>
-            <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100 shrink-0">
-              <ShieldCheck className="w-4 h-4" />
+            <div className="w-6 sm:w-8 h-6 sm:h-8 rounded-lg sm:rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100 shrink-0">
+              <ShieldCheck className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
             </div>
           </div>
           <div className="overflow-hidden">
-            <div className="text-base sm:text-lg lg:text-xl font-extrabold text-emerald-700 font-mono tracking-tight truncate">
+            <div className="text-xs sm:text-lg lg:text-xl font-extrabold text-emerald-700 font-mono tracking-tight truncate">
               {formatRupiah(totalPreventedFraud)}
             </div>
-            <div className="flex items-center gap-1 text-[11px] text-emerald-700 mt-1 font-sans font-semibold truncate">
-              <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
-              <span className="truncate">Saved by AI Engine</span>
+            <div className="flex items-center gap-1 text-[9px] sm:text-[11px] text-emerald-700 mt-0.5 font-sans font-semibold truncate">
+              <CheckCircle2 className="w-3 sm:w-3.5 h-3 sm:h-3.5 shrink-0" />
+              <span className="truncate">Saved by AI</span>
             </div>
           </div>
         </div>
 
         {/* Card 4: Reorder & Stockout Alerts */}
-        <div className="bg-white p-4 sm:p-5 rounded-3xl border border-red-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-3 min-h-[130px] overflow-hidden">
-          <div className="flex items-start justify-between gap-2">
-            <span className="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider font-mono leading-tight">
-              Peringatan Reorder
+        <div className="bg-white p-3 sm:p-5 rounded-2xl sm:rounded-3xl border border-red-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-2 overflow-hidden">
+          <div className="flex items-start justify-between gap-1">
+            <span className="text-[9px] sm:text-[11px] font-extrabold text-slate-500 uppercase tracking-wider font-mono leading-tight">
+              Reorder Alerts
             </span>
-            <div className="w-8 h-8 rounded-xl bg-red-50 text-red-600 flex items-center justify-center border border-red-100 shrink-0">
-              <AlertTriangle className="w-4 h-4" />
+            <div className="w-6 sm:w-8 h-6 sm:h-8 rounded-lg sm:rounded-xl bg-red-50 text-red-600 flex items-center justify-center border border-red-100 shrink-0">
+              <AlertTriangle className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
             </div>
           </div>
           <div className="overflow-hidden">
-            <div className="text-base sm:text-lg lg:text-xl font-extrabold text-red-600 font-mono tracking-tight truncate">
+            <div className="text-xs sm:text-lg lg:text-xl font-extrabold text-red-600 font-mono tracking-tight truncate">
               {totalReorderAlerts.toLocaleString('id-ID')} Alerts
             </div>
-            <div className="text-[11px] text-slate-500 mt-1 font-mono truncate">
-              Stok Sistem ≤ Safety Stock
+            <div className="text-[9px] sm:text-[11px] text-slate-500 mt-0.5 font-mono truncate">
+              Stok ≤ Safety
             </div>
           </div>
         </div>

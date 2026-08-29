@@ -44,7 +44,6 @@ export default function Sidebar({
   onLogout
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [showMobileRoleDropdown, setShowMobileRoleDropdown] = useState(false);
 
   const currentRoleConfig = ROLES[activeRole] || ROLES.DIRECTOR;
   const isSuperAdmin = currentUser?.role === 'DIRECTOR' || activeRole === 'DIRECTOR' || activeRole === 'DIREKTUR_FERDI';
@@ -62,21 +61,21 @@ export default function Sidebar({
 
   return (
     <>
-      {/* STICKY FIXED MOBILE TOP NAVIGATION BAR (Stays pinned at top-0 when scrolling!) */}
-      <div className="lg:hidden bg-white/95 backdrop-blur-md border-b border-slate-200 px-3.5 py-2 flex items-center justify-between shadow-sm sticky top-0 z-40 font-sans">
-        <div className="flex items-center gap-2.5">
+      {/* PERFECT FIXED MOBILE TOP NAVIGATION BAR (Fixed pinned at top-0 left-0 right-0 z-50 at all times!) */}
+      <div className="lg:hidden bg-white border-b border-slate-200 px-3.5 py-2.5 flex items-center justify-between shadow-md fixed top-0 left-0 right-0 z-50 font-sans max-w-full overflow-hidden">
+        <div className="flex items-center gap-2.5 min-w-0">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-all flex items-center justify-center font-bold shadow-md shadow-blue-500/20 active:scale-95"
+            className="p-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-all flex items-center justify-center font-bold shadow-md shadow-blue-500/20 active:scale-95 shrink-0"
             aria-label="Toggle Mobile Menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
 
-          <div>
-            <div className="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-wider">Tahapan Aktif</div>
-            <div className="text-xs font-extrabold text-slate-900 flex items-center gap-1">
-              <span>{activeStageObj.title}</span>
+          <div className="min-w-0">
+            <div className="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-wider truncate">Tahapan Aktif</div>
+            <div className="text-xs font-extrabold text-slate-900 flex items-center gap-1 min-w-0">
+              <span className="truncate">{activeStageObj.title}</span>
               <ChevronRight className="w-3 h-3 text-blue-600 shrink-0" />
             </div>
           </div>
@@ -84,7 +83,7 @@ export default function Sidebar({
 
         <button
           onClick={() => setMobileMenuOpen(true)}
-          className="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-blue-50 text-blue-700 border border-blue-200 whitespace-nowrap"
+          className="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-blue-50 text-blue-700 border border-blue-200 whitespace-nowrap shrink-0"
         >
           {visibleStages.length} Tahapan
         </button>
@@ -122,7 +121,7 @@ export default function Sidebar({
             </button>
           </div>
 
-          {/* Mobile Extra System Controls (Role Switcher, Sync, Audit) */}
+          {/* Mobile Extra System Controls (Sync, Import, Audit, Logout) */}
           <div className="lg:hidden p-3 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
             <div className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">Aksi Cepat Mobile</div>
             <div className="grid grid-cols-2 gap-2">

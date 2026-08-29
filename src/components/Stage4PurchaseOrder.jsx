@@ -181,7 +181,7 @@ export default function Stage4PurchaseOrder({
                 <button
                   type="button"
                   onClick={() => setShowSupplierModal(true)}
-                  className="text-blue-600 hover:underline text-[11px] font-bold"
+                  className="text-blue-600 hover:underline text-[11px] font-bold shrink-0"
                 >
                   + Tambah Vendor
                 </button>
@@ -189,11 +189,11 @@ export default function Stage4PurchaseOrder({
               <select
                 value={selectedSupplierId}
                 onChange={(e) => setSelectedSupplierId(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-3 text-slate-900 font-bold focus:ring-2 focus:ring-blue-600 focus:bg-white"
+                className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-2.5 text-xs text-slate-900 font-bold focus:ring-2 focus:ring-blue-600 focus:bg-white truncate"
               >
                 {suppliers.map((s) => (
                   <option key={s.id} value={s.id}>
-                    {s.name} (Rating: {s.rating} ★) • Index: {s.priceBenchmarkIndex}
+                    {s.name} ({s.rating} ★)
                   </option>
                 ))}
               </select>
@@ -204,7 +204,7 @@ export default function Stage4PurchaseOrder({
               type="submit"
               className="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs rounded-2xl shadow-lg shadow-blue-500/25 transition-all flex items-center justify-center gap-2"
             >
-              <Send className="w-4 h-4" />
+              <Send className="w-4 h-4 shrink-0" />
               Terbitkan Purchase Order Resmi
             </button>
 
@@ -212,28 +212,28 @@ export default function Stage4PurchaseOrder({
         </div>
 
         {/* AI Benchmarking Result Widget */}
-        <div className="bg-white p-6 rounded-3xl border border-slate-200 space-y-4 flex flex-col justify-between shadow-sm">
+        <div className="bg-white p-4 sm:p-6 rounded-3xl border border-slate-200 space-y-4 flex flex-col justify-between shadow-sm">
           <div className="space-y-4">
             <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-              <TrendingDown className="w-4 h-4 text-emerald-600" /> Hasil Benchmarking Harga AI
+              <TrendingDown className="w-4 h-4 text-emerald-600 shrink-0" /> Hasil Benchmarking Harga AI
             </h3>
 
-            <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3 font-mono text-xs">
-              <div className="flex items-center justify-between text-slate-500">
+            <div className="p-3.5 sm:p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2.5 font-mono text-xs">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-0.5 text-slate-500">
                 <span>Vendor Dipilih</span>
-                <strong className="text-slate-900 font-sans">{selectedSupplier.name}</strong>
+                <strong className="text-slate-900 font-sans font-bold">{selectedSupplier.name}</strong>
               </div>
-              <div className="flex items-center justify-between text-slate-500">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-0.5 text-slate-500">
                 <span>Indeks Pricing Benchmark</span>
                 <strong className="text-blue-700">{selectedSupplier.priceBenchmarkIndex}</strong>
               </div>
-              <div className="flex items-center justify-between text-slate-500">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-0.5 text-slate-500">
                 <span>Harga Estimasi PR</span>
                 <strong className="text-slate-700">Rp {estimatedPrice?.toLocaleString('id-ID')} / unit</strong>
               </div>
-              <div className="flex items-center justify-between text-slate-500">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-0.5 text-slate-500">
                 <span>Harga Setelah Benchmark AI</span>
-                <strong className="text-emerald-700 text-sm">Rp {benchmarkResult.negotiatedPrice?.toLocaleString('id-ID')} / unit</strong>
+                <strong className="text-emerald-700 text-xs sm:text-sm font-bold">Rp {benchmarkResult.negotiatedPrice?.toLocaleString('id-ID')} / unit</strong>
               </div>
               <div className="pt-2 border-t border-slate-200 flex items-center justify-between text-blue-700 font-bold">
                 <span>Delta Efisiensi</span>

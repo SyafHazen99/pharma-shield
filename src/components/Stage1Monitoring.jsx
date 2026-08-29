@@ -164,14 +164,14 @@ export default function Stage1Monitoring({
     <div className="space-y-6 font-sans">
       
       {/* Header Info Banner */}
-      <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="bg-white p-4 sm:p-6 rounded-3xl border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200 whitespace-nowrap">
-            <Activity className="w-3.5 h-3.5 text-blue-600" /> Tahap 1: Monitoring & Stock Opname Farmasi RSIA Melinda
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200 max-w-full flex-wrap">
+            <Activity className="w-3.5 h-3.5 text-blue-600 shrink-0" /> <span>Tahap 1: Monitoring & Stock Opname Farmasi RSIA Melinda</span>
           </div>
-          <h2 className="text-xl font-extrabold text-slate-900 mt-2 flex items-center gap-2">
+          <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 mt-2 flex flex-wrap items-center gap-2">
             <span>{effectiveRoomScope === 'ALL' ? 'Warehouse & Multi-Depo Master Inventory' : `Persediaan Ruangan: ${effectiveRoomScope}`}</span>
-            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-blue-100 text-blue-900 border border-blue-300 font-bold">
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-blue-100 text-blue-900 border border-blue-300 font-bold leading-tight">
               {roleConfig.name}
             </span>
           </h2>
@@ -180,21 +180,21 @@ export default function Stage1Monitoring({
           </p>
         </div>
 
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full md:w-auto shrink-0">
           <button
             onClick={openExcelModal}
-            className="px-4 py-3 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 font-extrabold text-xs rounded-2xl transition-all flex items-center gap-2 whitespace-nowrap"
+            className="px-4 py-2.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 font-extrabold text-xs rounded-2xl transition-all flex items-center justify-center gap-2 whitespace-nowrap"
             title="Upload Spreadsheet Excel (.xlsx) dr. Novia Dwi Anggraini"
           >
-            <FileSpreadsheet className="w-4 h-4 text-emerald-600" />
+            <FileSpreadsheet className="w-4 h-4 text-emerald-600 shrink-0" />
             Import Excel (.xlsx)
           </button>
 
           <button
             onClick={() => setShowAddModal(true)}
-            className="px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs rounded-2xl shadow-lg shadow-blue-500/25 transition-all flex items-center gap-2 whitespace-nowrap"
+            className="px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs rounded-2xl shadow-lg shadow-blue-500/25 transition-all flex items-center justify-center gap-2 whitespace-nowrap"
           >
-            <PlusCircle className="w-4 h-4" />
+            <PlusCircle className="w-4 h-4 shrink-0" />
             + Input Manual Item
           </button>
         </div>
@@ -202,7 +202,7 @@ export default function Stage1Monitoring({
 
       {/* Super Admin Direct Room Filter for dr. Novi */}
       {isSuperAdmin && (
-        <div className="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-3xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-sans shadow-sm">
+        <div className="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-3xl flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs font-sans shadow-sm">
           <div className="flex items-center gap-2">
             <Building2 className="w-5 h-5 text-blue-600 shrink-0" />
             <div>
@@ -211,12 +211,12 @@ export default function Stage1Monitoring({
             </div>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0">
-            <span className="font-mono text-slate-500 text-[11px] font-bold">Pilih Ruangan:</span>
+          <div className="flex items-center gap-2 w-full md:w-auto shrink-0">
+            <span className="font-mono text-slate-500 text-[11px] font-bold whitespace-nowrap">Pilih Ruangan:</span>
             <select
               value={selectedRoomFilter}
               onChange={(e) => setSelectedRoomFilter(e.target.value)}
-              className="bg-white border border-blue-300 rounded-2xl px-3 py-2 text-xs font-bold text-blue-900 focus:ring-2 focus:ring-blue-600 shadow-sm"
+              className="w-full md:w-auto bg-white border border-blue-300 rounded-2xl px-3 py-2 text-xs font-bold text-blue-900 focus:ring-2 focus:ring-blue-600 shadow-sm"
             >
               <option value="ALL">🌐 Semua Ruangan (Master Inventory)</option>
               <option value="Gudang Utama">📦 Gudang Utama (Central Storage)</option>
@@ -231,7 +231,7 @@ export default function Stage1Monitoring({
 
       {/* Restricted Room Master Banner (No Switch Button for Non-Admin Staff) */}
       {!isSuperAdmin && roomScope !== 'ALL' && (
-        <div className="p-4 bg-amber-50 border border-amber-200 rounded-3xl text-amber-900 text-xs font-bold flex items-center justify-between gap-3">
+        <div className="p-4 bg-amber-50 border border-amber-200 rounded-3xl text-amber-900 text-xs font-bold flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
             <Lock className="w-4 h-4 text-amber-700 shrink-0" />
             <div>
@@ -241,21 +241,21 @@ export default function Stage1Monitoring({
               </div>
             </div>
           </div>
-          <span className="px-3 py-1 bg-amber-600 text-white rounded-xl font-mono text-[10px] font-bold">Scope Enforced</span>
+          <span className="px-3 py-1 bg-amber-600 text-white rounded-xl font-mono text-[10px] font-bold self-start sm:self-auto">Scope Enforced</span>
         </div>
       )}
 
       {/* Item Taxonomy Category & Audit Standard Tabs */}
-      <div className="flex items-center gap-3 border-b border-slate-200 pb-1 overflow-x-auto">
+      <div className="flex items-center gap-2 border-b border-slate-200 pb-2 overflow-x-auto no-scrollbar max-w-full">
         <button
           onClick={() => setActiveTab('ALL')}
-          className={`px-4 py-2.5 rounded-2xl font-bold text-xs transition-all flex items-center gap-2 whitespace-nowrap shrink-0 ${
+          className={`px-4 py-2 rounded-2xl font-bold text-xs transition-all flex items-center gap-2 whitespace-nowrap shrink-0 ${
             activeTab === 'ALL'
               ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
               : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
           }`}
         >
-          <Boxes className="w-4 h-4" />
+          <Boxes className="w-4 h-4 shrink-0" />
           Semua Persediaan ({roomScopedMedicines.length})
         </button>
 
